@@ -15,6 +15,6 @@ public class ConsumoDetalleTest {
 	
 	@Test
 	public void mappingTestUsingFindAll(){
-		//repository.findAll();
+		repository.findAll();
 	}
 }
