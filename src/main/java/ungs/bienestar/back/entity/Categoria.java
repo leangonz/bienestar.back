@@ -24,4 +24,21 @@ public class Categoria implements Serializable{
 	
 	@NotBlank
 	private String descripcion;
+
+	public Long getIdCategoria() {
+		return idCategoria;
+	}
+
+	public void setIdCategoria(Long idCategoria) {
+		this.idCategoria = idCategoria;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+	
 }
