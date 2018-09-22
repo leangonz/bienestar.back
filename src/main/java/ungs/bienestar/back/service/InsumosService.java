@@ -29,7 +29,6 @@ public class InsumosService {
 		InsumoDto dto = new InsumoDto();
 		dto.setId(insumo.getIdInsumos());
 		dto.setDescripcion(insumo.getDescripcion());
-		//dto.setCantidadDisponible(cantidadDisponible);
 		dto.setUnidadDeMedida(insumo.getUnidadDeMedida().getDescripcion());
 		return dto;
 	}

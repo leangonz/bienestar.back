@@ -10,8 +10,6 @@ public class InsumoDto {
 	
 	private String unidadDeMedida;
 	
-	private Double cantidadDisponible;
-
 	public Long getId() {
 		return id;
 	}
@@ -44,12 +42,4 @@ public class InsumoDto {
 		this.unidadDeMedida = unidadDeMedida;
 	}
 
-	public Double getCantidadDisponible() {
-		return cantidadDisponible;
-	}
-
-	public void setCantidadDisponible(Double cantidadDisponible) {
-		this.cantidadDisponible = cantidadDisponible;
-	}
-	
 }

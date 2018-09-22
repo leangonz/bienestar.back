@@ -10,7 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import ungs.bienestar.back.entity.Menue;
-import ungs.bienestar.back.entity.TipoDeMenue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

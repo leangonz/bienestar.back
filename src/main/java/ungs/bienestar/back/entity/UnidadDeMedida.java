@@ -25,6 +25,15 @@ public class UnidadDeMedida implements Serializable{
 	@NotBlank
 	private String descripcion;
 
+	public UnidadDeMedida() {
+	}
+
+	public UnidadDeMedida(Long idUnidadMedida, @NotBlank String descripcion) {
+		super();
+		this.idUnidadMedida = idUnidadMedida;
+		this.descripcion = descripcion;
+	}
+
 	public Long getIdUnidadMedida() {
 		return idUnidadMedida;
 	}
