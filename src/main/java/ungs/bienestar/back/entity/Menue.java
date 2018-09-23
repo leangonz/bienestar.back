@@ -35,7 +35,7 @@ public class Menue implements Serializable {
 	private TipoDeMenue tipoDeMenue;
 
 	@ManyToMany
-	@JoinTable(name = "insumos_por_menues", joinColumns = @JoinColumn(name = "id_insumos"), inverseJoinColumns = @JoinColumn(name = "id_menues"))
+	@JoinTable(name = "insumos_por_menues", joinColumns = @JoinColumn(name = "id_menues"), inverseJoinColumns = @JoinColumn(name = "id_insumos"))
 	private List<Insumo> insumos;
 
 	public Long getIdMenues() {
