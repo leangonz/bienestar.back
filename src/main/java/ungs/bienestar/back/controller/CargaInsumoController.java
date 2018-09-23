@@ -3,7 +3,9 @@ package ungs.bienestar.back.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import ungs.bienestar.back.dto.InsumoDto;
@@ -15,8 +17,9 @@ public class CargaInsumoController {
 	@Autowired
 	private InsumosService insumoService;
 	
-	@RequestMapping("/cargaInsumoMenu")
-    public List<InsumoDto> comboMenue() {
-        return insumoService.obtenerInsumosPorMenu(1l);
+	@CrossOrigin(origins = "*")
+	@PostMapping("/cargaInsumoMenu")
+    public List<InsumoDto> cargaInsumoMenu(@RequestBody Long idMenu) {
+        return insumoService.obtenerInsumosPorMenu(idMenu);
     }
 }
