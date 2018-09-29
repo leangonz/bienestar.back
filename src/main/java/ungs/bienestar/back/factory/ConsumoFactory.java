@@ -33,6 +33,7 @@ public class ConsumoFactory {
 		consumo.setCantidadAdultos(consumoRealizado.getAdultos());
 		consumo.setConsumosDetalle(new ArrayList<>());
 		consumoRealizado.getInsumos().forEach(ConsumerWithException.wrapper(insumo -> consumo.addConsumoDetalle(this.crearConsumoDetalle(insumo))));
+		//TODO no estoy obteniendo el usuario logeado
 		consumo.setUsuario(new Usuario(1l));
 		return consumo;
 	}
@@ -41,6 +42,7 @@ public class ConsumoFactory {
 		ConsumoDetalle detalle = new ConsumoDetalle();
 		detalle.setInsumo(insumoService.obtenerInsumoBy(insumo.getId()));
 		detalle.setCantidad(insumo.getCantidad());
+		//TODO no estoy recibiendo el menu
 		detalle.setMenue(new Menue(1l));
 		return detalle;
 	}

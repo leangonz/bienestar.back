@@ -21,8 +21,8 @@ public class ConsumoService {
 	@Autowired
 	private ConsumoFactory consumoFactory;
 	
-	public void guardarConsumo(ConsumoRealizadoDto dto) {
+	public Consumo guardarConsumo(ConsumoRealizadoDto dto) {
 		Consumo consumo = consumoFactory.crearConsumo(dto);
-		consumoRepository.save(consumo);
+		return consumoRepository.save(consumo);
 	}
 }
