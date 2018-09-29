@@ -35,7 +35,7 @@ public class ConsumoDetalle implements Serializable {
     @JoinColumn(name="id_menues")
 	private Menue menue;
 
-	private Integer cantidad;
+	private Double cantidad;
 	
 	public Long getIdConsumoDetalle() {
 		return idConsumoDetalle;
@@ -69,11 +69,11 @@ public class ConsumoDetalle implements Serializable {
 		this.menue = menue;
 	}
 
-	public Integer getCantidad() {
+	public Double getCantidad() {
 		return cantidad;
 	}
 
-	public void setCantidad(Integer cantidad) {
+	public void setCantidad(Double cantidad) {
 		this.cantidad = cantidad;
 	}
 	

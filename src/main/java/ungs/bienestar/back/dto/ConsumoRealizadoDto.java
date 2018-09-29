@@ -3,7 +3,7 @@ package ungs.bienestar.back.dto;
 import java.util.Date;
 import java.util.List;
 
-public class InsumoRealizadoDto {
+public class ConsumoRealizadoDto {
 
 	private Date fecha;
 	private Integer lactarios;

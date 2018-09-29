@@ -9,15 +9,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import ungs.bienestar.back.dto.ConsumoRealizadoDto;
 import ungs.bienestar.back.dto.InsumoDto;
-import ungs.bienestar.back.dto.InsumoRealizadoDto;
+import ungs.bienestar.back.service.ComidaService;
 import ungs.bienestar.back.service.InsumosService;
 
 @RestController
-public class CargaInsumoController {
+public class CargaConsumoController {
 
 	@Autowired
 	private InsumosService insumoService;
+	
+	@Autowired
+	private ComidaService comidaService;
 	
 	@CrossOrigin(origins = "*")
 	@PostMapping("/cargaInsumoMenu")
@@ -32,9 +36,9 @@ public class CargaInsumoController {
 	}
 	
 	@CrossOrigin(origins = "*")
-	@PostMapping("/guardarInsumoRealizado")
-	public Boolean guardarInsumoRealizado(@RequestBody InsumoRealizadoDto dto){
-		System.out.println();
+	@PostMapping("/guardarConsumoRealizado")
+	public Boolean guardarConsumoRealizado(@RequestBody ConsumoRealizadoDto dto){
+		comidaService.guardarComida(dto);
 		return true;
 	}
 }

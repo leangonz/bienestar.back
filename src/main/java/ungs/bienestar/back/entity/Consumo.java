@@ -2,19 +2,22 @@ package ungs.bienestar.back.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "consumo")
-public class Consumo implements Serializable{
+public class Consumo implements Serializable {
 
 	/**
 	 * 
@@ -22,32 +25,35 @@ public class Consumo implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idConsumo;
-	
-	@NotBlank
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long idConsumo;
+
+	@NotNull
 	private LocalDate fecha;
-	
-	@NotBlank
+
+	@NotNull
 	private Integer cantidadLactario = 0;
-	
-	@NotBlank
+
+	@NotNull
 	private Integer cantidadUnAnio = 0;
-	
-	@NotBlank
+
+	@NotNull
 	private Integer cantidadDosAnios = 0;
-	
-	@NotBlank
+
+	@NotNull
 	private Integer cantidadTresAnios = 0;
-	
-	@NotBlank
+
+	@NotNull
 	private Integer cantidadCuatroCincoAnios = 0;
-	
-	@NotBlank
+
+	@NotNull
 	private Integer cantidadAdultos = 0;
-	
+
+	@OneToMany(mappedBy = "consumo", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<ConsumoDetalle> consumosDetalle;
+
 	@ManyToOne
-    @JoinColumn(name="id_usuario")
+	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
 
 	public Long getIdConsumo() {
@@ -114,6 +120,19 @@ public class Consumo implements Serializable{
 		this.cantidadAdultos = cantidadAdultos;
 	}
 
+	public List<ConsumoDetalle> getConsumosDetalle() {
+		return consumosDetalle;
+	}
+
+	public void setConsumosDetalle(List<ConsumoDetalle> consumosDetalle) {
+		this.consumosDetalle = consumosDetalle;
+	}
+
+	public void addConsumoDetalle(ConsumoDetalle consumoDetalle) {
+		this.consumosDetalle.add(consumoDetalle);
+		consumoDetalle.setConsumo(this);
+	}
+	
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -121,6 +140,5 @@ public class Consumo implements Serializable{
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
-	
+
 }

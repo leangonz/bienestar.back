@@ -38,6 +38,15 @@ public class Menue implements Serializable {
 	@JoinTable(name = "insumos_por_menues", joinColumns = @JoinColumn(name = "id_menues"), inverseJoinColumns = @JoinColumn(name = "id_insumos"))
 	private List<Insumo> insumos;
 
+	public Menue() {
+	}
+	
+	public Menue(Long idMenues) {
+		super();
+		this.idMenues = idMenues;
+	}
+
+
 	public Long getIdMenues() {
 		return idMenues;
 	}

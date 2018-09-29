@@ -11,7 +11,7 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "usuario")
-public class Usuario implements Serializable{
+public class Usuario implements Serializable {
 
 	/**
 	 * 
@@ -19,17 +19,24 @@ public class Usuario implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUsuario;
-	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long idUsuario;
+
 	@NotBlank
 	private String usuario;
-	
+
 	@NotBlank
 	private String nombre;
-	
+
 	@NotBlank
 	private String password;
+
+	public Usuario() {
+	}
+
+	public Usuario(Long idUsuario) {
+		this.idUsuario = idUsuario;
+	}
 
 	public Long getIdUsuario() {
 		return idUsuario;
@@ -62,5 +69,5 @@ public class Usuario implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 }
