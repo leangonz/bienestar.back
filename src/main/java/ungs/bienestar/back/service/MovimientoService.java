@@ -11,7 +11,8 @@ import ungs.bienestar.back.entity.ConsumoDetalle;
 import ungs.bienestar.back.entity.Movimiento;
 import ungs.bienestar.back.exception.NegativeStockException;
 import ungs.bienestar.back.exception.NotExistStockException;
-import ungs.bienestar.back.factory.MovimientoFactory;
+import ungs.bienestar.back.factory.MovimientoModelFactory;
+import ungs.bienestar.back.model.movimiento.MovimientoModel;
 import ungs.bienestar.back.repository.MovimientoRepository;
 
 @Service
@@ -24,7 +25,7 @@ public class MovimientoService {
 	private MovimientoRepository movimientoRepository;
 	
 	@Autowired
-	private MovimientoFactory movimientoFactory;
+	private MovimientoModelFactory movimientoFactory;
 	
 	@Autowired
 	private StockService stockService;
@@ -38,6 +39,12 @@ public class MovimientoService {
 			// TODO que hacer en ambos casos?
 			logger.error(e.getMessage());
 		}
+	}
+
+	public void generarMovimiento(MovimientoModel model) {
+		Movimiento movimiento = model.crearMovimiento();
+		movimientoRepository.save(movimiento);
+		model.actualizarStock();
 	}
 
 }

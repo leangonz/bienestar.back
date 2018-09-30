@@ -5,6 +5,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ungs.bienestar.back.dto.AjusteStockDto;
 import ungs.bienestar.back.entity.Insumo;
 import ungs.bienestar.back.entity.Stock;
 import ungs.bienestar.back.exception.NegativeStockException;
@@ -40,6 +41,11 @@ public class StockService {
 		if((stock.getCantidad() - cantidadADisminuir) < 0) {
 			throw new NegativeStockException();
 		}
+	}
+
+	public void ajustarStock(AjusteStockDto dto) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

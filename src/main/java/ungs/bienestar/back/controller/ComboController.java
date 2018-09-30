@@ -22,6 +22,7 @@ public class ComboController {
         return comboService.menuesItems();
     }
 	
+	@CrossOrigin(origins = "*")
 	@RequestMapping("/comboMotivo")
     public List<ComboDto> comboMotivo() {
         return comboService.motivosItems();

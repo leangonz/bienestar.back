@@ -25,6 +25,9 @@ public class Motivo implements Serializable{
 	@NotBlank
 	private String descripcion;
 
+	public Motivo() {
+	}
+	
 	public Motivo(Long idMotivos) {
 		super();
 		this.idMotivos = idMotivos;

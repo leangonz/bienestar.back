@@ -35,6 +35,15 @@ public class Insumo implements Serializable{
     @JoinColumn(name="idCategoria")
 	private Categoria categoria;
 
+	public Insumo() {
+	}
+
+	public Insumo(Long idInsumos) {
+		super();
+		this.idInsumos = idInsumos;
+	}
+
+
 	public Long getIdInsumos() {
 		return idInsumos;
 	}
