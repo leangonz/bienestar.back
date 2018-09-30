@@ -1,5 +1,6 @@
 package ungs.bienestar.back.service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -56,6 +57,16 @@ public class ComboService {
 		item.setId(getId.get());
 		item.setDescripcion(getDescripcion.get());
 		return item;
+	}
+
+	public List<ComboDto> motivoAjustableItems() {
+		return this.motivosItems().stream().filter(m -> this.isMotivoAjustable(m.getId())).collect(Collectors.toList());
+	}
+	
+	//FIXME hacerlo mejor
+	private Boolean isMotivoAjustable(Long idMotivo) {
+		List<Long> motivosAjustables = Arrays.asList(1l,2l,3l,4l);
+		return motivosAjustables.contains(idMotivo);
 	}
 
 }

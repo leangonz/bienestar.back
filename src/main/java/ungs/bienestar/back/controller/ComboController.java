@@ -28,6 +28,12 @@ public class ComboController {
         return comboService.motivosItems();
     }
 	
+	@CrossOrigin(origins = "*")
+	@RequestMapping("/comboMotivosAjustables")
+    public List<ComboDto> comboMotivosAjustables() {
+        return comboService.motivoAjustableItems();
+    }
+	
 	@RequestMapping("/comboTipoMenue")
     public List<ComboDto> comboTipoMenue() {
         return comboService.tipoDeMenueItems();
