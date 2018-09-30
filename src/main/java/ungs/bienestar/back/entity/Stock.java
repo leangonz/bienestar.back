@@ -23,7 +23,7 @@ public class Stock implements Serializable{
     private Long idInsumos;
 	
 	@NotNull
-	private Integer cantidad;
+	private Double cantidad;
 	
 	@NotNull
 	private Integer cantidadMinima;
@@ -36,11 +36,11 @@ public class Stock implements Serializable{
 		this.idInsumos = idInsumos;
 	}
 
-	public Integer getCantidad() {
+	public Double getCantidad() {
 		return cantidad;
 	}
 
-	public void setCantidad(Integer cantidad) {
+	public void setCantidad(Double cantidad) {
 		this.cantidad = cantidad;
 	}
 

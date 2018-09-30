@@ -39,8 +39,8 @@ public class Insumo implements Serializable{
 		return idInsumos;
 	}
 
-	public void setIdInsumos(Long idInsumos) {
-		this.idInsumos = idInsumos;
+	public void setIdInsumos(Long idInsumo) {
+		this.idInsumos = idInsumo;
 	}
 
 	public String getDescripcion() {

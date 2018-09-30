@@ -17,6 +17,7 @@ public class NotFoundException extends Exception{
 		this.id = id;
 	}
 
+	//TODO el mensaje esta atado a que no se encontro un insumo.MAL
 	@Override
 	public String getMessage() {
 		return String.format(Errors.INSUMO_NOT_FOUND, entity, id);

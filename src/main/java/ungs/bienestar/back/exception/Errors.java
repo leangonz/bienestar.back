@@ -2,5 +2,9 @@ package ungs.bienestar.back.exception;
 
 public class Errors {
 
-	public static final String INSUMO_NOT_FOUND = "No se ha encontrado el {0} con id {1}";
+	public static final String INSUMO_NOT_FOUND = "No se ha encontrado el %s con id %d";
+	
+	public static final String STOCK_NOT_EXIST = "No existe el stock para el insumo %s";
+
+	public static final String STOCK_NEGATIVE = "El Stock se encuentra con valores negativos";
 }
