@@ -44,7 +44,12 @@ public class MovimientoService {
 	public void generarMovimiento(MovimientoModel model) {
 		Movimiento movimiento = model.crearMovimiento();
 		movimientoRepository.save(movimiento);
-		model.actualizarStock();
+		try {
+			model.actualizarStock(movimiento);
+		} catch (NotExistStockException | NegativeStockException e) {
+			// TODO que hacer en ambos casos?
+			logger.error(e.getMessage());
+		}
 	}
 
 }

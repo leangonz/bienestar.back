@@ -3,6 +3,9 @@ package ungs.bienestar.back.model.movimiento;
 import java.util.Date;
 
 import ungs.bienestar.back.dto.InsumoDto;
+import ungs.bienestar.back.entity.Movimiento;
+import ungs.bienestar.back.exception.NegativeStockException;
+import ungs.bienestar.back.exception.NotExistStockException;
 
 public class MovimientoMalEstado extends MovimientoModel {
 
@@ -12,9 +15,8 @@ public class MovimientoMalEstado extends MovimientoModel {
 	}
 
 	@Override
-	public void actualizarStock() {
-		// TODO Auto-generated method stub
-		
+	public void actualizarStock(Movimiento movimiento) throws NotExistStockException, NegativeStockException {
+		stockService.disminuirStock(movimiento.getInsumo(), movimiento.getCantidadAjustada());
 	}
 
 }
