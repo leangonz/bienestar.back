@@ -29,7 +29,7 @@ public class Proveedor implements Serializable{
 	
 	private String calle;
 	
-	private String altura;
+	private Integer altura;
 	
 	@ManyToOne
     @JoinColumn(name="cp")
@@ -77,11 +77,11 @@ public class Proveedor implements Serializable{
 		this.calle = calle;
 	}
 
-	public String getAltura() {
+	public Integer getAltura() {
 		return altura;
 	}
 
-	public void setAltura(String altura) {
+	public void setAltura(Integer altura) {
 		this.altura = altura;
 	}
 

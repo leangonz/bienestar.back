@@ -2,5 +2,5 @@ package ungs.bienestar.back.exception;
 
 public enum Entity {
 
-	INSUMO, MENU
+	INSUMO, MENU, FORMA_DE_PAGO, CIUDAD
 }
