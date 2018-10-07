@@ -11,8 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ungs.bienestar.back.dto.ComboDto;
+import ungs.bienestar.back.repository.CategoriaCompraRepository;
 import ungs.bienestar.back.repository.MenueRepository;
 import ungs.bienestar.back.repository.MotivoRepository;
+import ungs.bienestar.back.repository.ProveedorRepository;
 import ungs.bienestar.back.repository.TipoDeMenueRepository;
 import ungs.bienestar.back.repository.UnidadDeMedidaRepository;
 
@@ -31,6 +33,12 @@ public class ComboService {
 	
 	@Autowired
 	private UnidadDeMedidaRepository unidadDeMedidaRepository;
+	
+	@Autowired
+	private CategoriaCompraRepository categoriaCompraRepository;
+	
+	@Autowired
+	private ProveedorRepository proveedorRepository;
 	
 	public List<ComboDto> menuesItems() {
 		return menueRepository.findAll().stream().map(m -> mapper(m::getIdMenues, m::getDescripcion))
@@ -52,13 +60,6 @@ public class ComboService {
 				.collect(Collectors.toList());
 	}
 	
-	private ComboDto mapper(Supplier<Long> getId, Supplier<String> getDescripcion) {
-		ComboDto item = new ComboDto();
-		item.setId(getId.get());
-		item.setDescripcion(getDescripcion.get());
-		return item;
-	}
-
 	public List<ComboDto> motivoAjustableItems() {
 		return this.motivosItems().stream().filter(m -> this.isMotivoAjustable(m.getId())).collect(Collectors.toList());
 	}
@@ -69,4 +70,20 @@ public class ComboService {
 		return motivosAjustables.contains(idMotivo);
 	}
 
+	public List<ComboDto> categoriaCompraItems() {
+		return categoriaCompraRepository.findAll().stream().map(m -> mapper(m::getIdCategoriaCompra, m::getCategoria))
+				.collect(Collectors.toList());
+	}
+
+	public List<ComboDto> proveedoresItems() {
+		return proveedorRepository.findAll().stream().map(m -> mapper(m::getIdProveedor, m::getNombreProveedor))
+				.collect(Collectors.toList());
+	}
+
+	private ComboDto mapper(Supplier<Long> getId, Supplier<String> getDescripcion) {
+		ComboDto item = new ComboDto();
+		item.setId(getId.get());
+		item.setDescripcion(getDescripcion.get());
+		return item;
+	}
 }

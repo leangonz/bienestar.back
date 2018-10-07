@@ -34,13 +34,27 @@ public class ComboController {
         return comboService.motivoAjustableItems();
     }
 	
+	@CrossOrigin(origins = "*")
 	@RequestMapping("/comboTipoMenue")
     public List<ComboDto> comboTipoMenue() {
         return comboService.tipoDeMenueItems();
     }
 	
+	@CrossOrigin(origins = "*")
 	@RequestMapping("/comboUnidadMedida")
     public List<ComboDto> comboUnidadMedida() {
         return comboService.unidadDeMedidaItems();
+    }
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping("/comboCategoriaCompra")
+    public List<ComboDto> comboCategoriaCompra() {
+        return comboService.categoriaCompraItems();
+    }
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping("/comboProveedores")
+    public List<ComboDto> comboProveedores() {
+        return comboService.proveedoresItems();
     }
 }
