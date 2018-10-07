@@ -57,4 +57,16 @@ public class ComboController {
     public List<ComboDto> comboProveedores() {
         return comboService.proveedoresItems();
     }
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping("/comboLocalidades")
+    public List<ComboDto> comboLocalidades() {
+        return comboService.localidadesItems();
+    }
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping("/comboFormaDePago")
+    public List<ComboDto> comboFormaDePago() {
+        return comboService.formaDePagoItems();
+    }
 }

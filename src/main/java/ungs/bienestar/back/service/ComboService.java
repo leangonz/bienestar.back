@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 
 import ungs.bienestar.back.dto.ComboDto;
 import ungs.bienestar.back.repository.CategoriaCompraRepository;
+import ungs.bienestar.back.repository.CiudadRepository;
+import ungs.bienestar.back.repository.FormaDePagoRepository;
 import ungs.bienestar.back.repository.MenueRepository;
 import ungs.bienestar.back.repository.MotivoRepository;
 import ungs.bienestar.back.repository.ProveedorRepository;
@@ -39,6 +41,12 @@ public class ComboService {
 	
 	@Autowired
 	private ProveedorRepository proveedorRepository;
+	
+	@Autowired
+	private CiudadRepository ciudadRepository;
+	
+	@Autowired
+	private FormaDePagoRepository formaDePagoRepository;
 	
 	public List<ComboDto> menuesItems() {
 		return menueRepository.findAll().stream().map(m -> mapper(m::getIdMenues, m::getDescripcion))
@@ -80,6 +88,16 @@ public class ComboService {
 				.collect(Collectors.toList());
 	}
 
+	public List<ComboDto> localidadesItems() {
+		return ciudadRepository.findAll().stream().map(m -> mapper(m::getCp, m::getNombre))
+				.collect(Collectors.toList());
+	}
+
+	public List<ComboDto> formaDePagoItems() {
+		return formaDePagoRepository.findAll().stream().map(m -> mapper(m::getIdFormaPago, m::getDescripcion))
+				.collect(Collectors.toList());
+	}
+	
 	private ComboDto mapper(Supplier<Long> getId, Supplier<String> getDescripcion) {
 		ComboDto item = new ComboDto();
 		item.setId(getId.get());
