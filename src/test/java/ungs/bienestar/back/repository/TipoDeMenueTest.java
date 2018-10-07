@@ -28,10 +28,10 @@ public class TipoDeMenueTest {
 		List<TipoDeMenue> tiposMenue = repository.findAll();
 		Assert.assertNotNull(tiposMenue);
 		Assert.assertEquals(6, tiposMenue.size());
-		Assert.assertEquals("Colación", tiposMenue.get(0).getDescripcion());
-		Assert.assertEquals("Infusión", tiposMenue.get(1).getDescripcion());
+		Assert.assertEquals("ColaciÃ³n", tiposMenue.get(0).getDescripcion());
+		Assert.assertEquals("InfusiÃ³n", tiposMenue.get(1).getDescripcion());
 		Assert.assertEquals("Principal", tiposMenue.get(2).getDescripcion());
-		Assert.assertEquals("Guarnición", tiposMenue.get(3).getDescripcion());
+		Assert.assertEquals("GuarniciÃ³n", tiposMenue.get(3).getDescripcion());
 		Assert.assertEquals("Salsas", tiposMenue.get(4).getDescripcion());
 		Assert.assertEquals("Postre", tiposMenue.get(5).getDescripcion());
 	}

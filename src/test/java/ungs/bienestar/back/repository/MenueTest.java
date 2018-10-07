@@ -33,7 +33,7 @@ public class MenueTest {
 		Assert.assertEquals("Pan Mermelada", menues.get(2).getDescripcion());
 		Assert.assertEquals("Leche Chocolatada", menues.get(3).getDescripcion());
 		Assert.assertEquals("Matecocido", menues.get(4).getDescripcion());
-		Assert.assertEquals("Té con Leche", menues.get(5).getDescripcion());
+		Assert.assertEquals("TÃ© con Leche", menues.get(5).getDescripcion());
 		Assert.assertEquals("Yogurt", menues.get(6).getDescripcion());
 	}
 }

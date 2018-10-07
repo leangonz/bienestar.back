@@ -30,8 +30,8 @@ public class CategoriaTest {
 		Assert.assertEquals(6, categorias.size());
 		Assert.assertEquals("Frescos", categorias.get(0).getDescripcion());
 		Assert.assertEquals("Carne", categorias.get(1).getDescripcion());
-		Assert.assertEquals("Almacén", categorias.get(2).getDescripcion());
-		Assert.assertEquals("Verdulería", categorias.get(3).getDescripcion());
+		Assert.assertEquals("AlmacÃ©n", categorias.get(2).getDescripcion());
+		Assert.assertEquals("VerdulerÃ­a", categorias.get(3).getDescripcion());
 		Assert.assertEquals("E. Frizzados", categorias.get(4).getDescripcion());
 		Assert.assertEquals("E. Guardados", categorias.get(5).getDescripcion());
 	}
