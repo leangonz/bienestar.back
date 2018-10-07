@@ -14,6 +14,7 @@ import ungs.bienestar.back.dto.ComboDto;
 import ungs.bienestar.back.repository.CategoriaCompraRepository;
 import ungs.bienestar.back.repository.CiudadRepository;
 import ungs.bienestar.back.repository.FormaDePagoRepository;
+import ungs.bienestar.back.repository.InsumoRepository;
 import ungs.bienestar.back.repository.MenueRepository;
 import ungs.bienestar.back.repository.MotivoRepository;
 import ungs.bienestar.back.repository.ProveedorRepository;
@@ -47,6 +48,9 @@ public class ComboService {
 	
 	@Autowired
 	private FormaDePagoRepository formaDePagoRepository;
+	
+	@Autowired
+	private InsumoRepository insumoRepository;
 	
 	public List<ComboDto> menuesItems() {
 		return menueRepository.findAll().stream().map(m -> mapper(m::getIdMenues, m::getDescripcion))
@@ -95,6 +99,11 @@ public class ComboService {
 
 	public List<ComboDto> formaDePagoItems() {
 		return formaDePagoRepository.findAll().stream().map(m -> mapper(m::getIdFormaPago, m::getDescripcion))
+				.collect(Collectors.toList());
+	}
+	
+	public List<ComboDto> insumosItems() {
+		return insumoRepository.findAll().stream().map(m -> mapper(m::getIdInsumos, m::getDescripcion))
 				.collect(Collectors.toList());
 	}
 	

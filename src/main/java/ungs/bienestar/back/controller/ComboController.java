@@ -69,4 +69,10 @@ public class ComboController {
     public List<ComboDto> comboFormaDePago() {
         return comboService.formaDePagoItems();
     }
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping("/comboInsumos")
+    public List<ComboDto> comboInsumos() {
+        return comboService.insumosItems();
+    }
 }
