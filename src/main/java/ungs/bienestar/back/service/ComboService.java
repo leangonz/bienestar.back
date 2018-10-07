@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ungs.bienestar.back.dto.ComboDto;
+import ungs.bienestar.back.repository.AreaRepository;
 import ungs.bienestar.back.repository.CategoriaCompraRepository;
 import ungs.bienestar.back.repository.CiudadRepository;
 import ungs.bienestar.back.repository.FormaDePagoRepository;
@@ -51,6 +52,9 @@ public class ComboService {
 	
 	@Autowired
 	private InsumoRepository insumoRepository;
+	
+	@Autowired
+	private AreaRepository areaRepository;
 	
 	public List<ComboDto> menuesItems() {
 		return menueRepository.findAll().stream().map(m -> mapper(m::getIdMenues, m::getDescripcion))
@@ -107,10 +111,16 @@ public class ComboService {
 				.collect(Collectors.toList());
 	}
 	
+	public List<ComboDto> areaItems() {
+		return areaRepository.findAll().stream().map(m -> mapper(m::getIdArea, m::getDescripcion))
+				.collect(Collectors.toList());
+	}
+	
 	private ComboDto mapper(Supplier<Long> getId, Supplier<String> getDescripcion) {
 		ComboDto item = new ComboDto();
 		item.setId(getId.get());
 		item.setDescripcion(getDescripcion.get());
 		return item;
 	}
+
 }

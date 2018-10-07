@@ -75,4 +75,10 @@ public class ComboController {
     public List<ComboDto> comboInsumos() {
         return comboService.insumosItems();
     }
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping("/comboAreas")
+    public List<ComboDto> comboAreas() {
+        return comboService.areaItems();
+    }
 }
