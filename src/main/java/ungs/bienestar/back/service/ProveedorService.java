@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import ungs.bienestar.back.dto.ProveedorDto;
 import ungs.bienestar.back.entity.Proveedor;
+import ungs.bienestar.back.exception.Entity;
 import ungs.bienestar.back.exception.NotFoundException;
 import ungs.bienestar.back.factory.ProveedorFactory;
 import ungs.bienestar.back.repository.ProveedorRepository;
@@ -29,5 +30,9 @@ public class ProveedorService {
 		} catch (NotFoundException e) {
 			throw new RuntimeException(e);
 		}
+	}
+	
+	public Proveedor obtenerProveedorBy(Long id) throws NotFoundException {
+		return proveedorRepository.findById(id).orElseThrow(() -> new NotFoundException(Entity.PROVEEDOR, id));
 	}
 }

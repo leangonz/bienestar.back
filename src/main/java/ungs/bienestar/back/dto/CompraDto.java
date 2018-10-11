@@ -3,7 +3,7 @@ package ungs.bienestar.back.dto;
 import java.util.Date;
 import java.util.List;
 
-public class OrdenCompraDto {
+public class CompraDto {
 
 	private Date fecha;
 	
@@ -13,7 +13,7 @@ public class OrdenCompraDto {
 	
 	private Long categoria;
 	
-	private List<OrdenCompraItemDto> items;
+	private List<CompraItemDto> items;
 
 	public Date getFecha() {
 		return fecha;
@@ -47,11 +47,11 @@ public class OrdenCompraDto {
 		this.categoria = categoria;
 	}
 
-	public List<OrdenCompraItemDto> getItems() {
+	public List<CompraItemDto> getItems() {
 		return items;
 	}
 
-	public void setItems(List<OrdenCompraItemDto> items) {
+	public void setItems(List<CompraItemDto> items) {
 		this.items = items;
 	}
 	

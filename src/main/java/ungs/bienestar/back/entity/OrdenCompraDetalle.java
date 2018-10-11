@@ -32,7 +32,7 @@ public class OrdenCompraDetalle implements Serializable{
 	private Movimiento movimiento;
 	
 	@ManyToOne
-    @JoinColumn(name="id_consumo")
+    @JoinColumn(name="id_insumo")
 	private Insumo insumo;
 	
 	@ManyToOne

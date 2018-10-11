@@ -22,7 +22,7 @@ public class ProveedorFactory {
 		Proveedor proveedor = new Proveedor();
 		proveedor.setNombreProveedor(dto.getNombre());
 		proveedor.setCuit(dto.getCuit());
-		proveedor.setCiudad(ciudadService.obtenerFormaDePagoBy(dto.getLocalidad()));
+		proveedor.setCiudad(ciudadService.obtenerCiudadBy(dto.getLocalidad()));
 		proveedor.setCalle(dto.getCalle());
 		proveedor.setAltura(dto.getAltura());
 		proveedor.setFormaDePago(formaDePagoService.obtenerFormaDePagoBy(dto.getFormaDePago()));

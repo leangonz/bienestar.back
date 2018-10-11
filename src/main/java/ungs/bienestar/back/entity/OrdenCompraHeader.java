@@ -1,7 +1,7 @@
 package ungs.bienestar.back.entity;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -27,7 +27,7 @@ public class OrdenCompraHeader implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idOc;
 	
-	private LocalDate fecha;
+	private Date fecha;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_proveedor")
@@ -48,11 +48,11 @@ public class OrdenCompraHeader implements Serializable{
 		this.idOc = idOc;
 	}
 
-	public LocalDate getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(LocalDate fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 
@@ -78,6 +78,11 @@ public class OrdenCompraHeader implements Serializable{
 
 	public void setDetalle(List<OrdenCompraDetalle> detalle) {
 		this.detalle = detalle;
+	}
+	
+	public void addCompraItem(OrdenCompraDetalle item) {
+		this.detalle.add(item);
+		item.setHeader(this);
 	}
 	
 }

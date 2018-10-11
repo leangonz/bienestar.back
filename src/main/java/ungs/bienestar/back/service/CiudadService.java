@@ -17,7 +17,7 @@ public class CiudadService {
 	@Autowired
 	private CiudadRepository ciudadRepository;
 	
-	public Ciudad obtenerFormaDePagoBy(Long id) throws NotFoundException {
+	public Ciudad obtenerCiudadBy(Long id) throws NotFoundException {
 		return ciudadRepository.findById(id).orElseThrow(() -> new NotFoundException(Entity.CIUDAD, id));
 	}
 }

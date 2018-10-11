@@ -1,6 +1,6 @@
 package ungs.bienestar.back.dto;
 
-public class OrdenCompraItemDto {
+public class CompraItemDto {
 
 	private Long insumo;
 	
