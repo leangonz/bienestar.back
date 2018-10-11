@@ -33,18 +33,22 @@ public class MovimientoModelFactory {
 	}
 	
 	public MovimientoModel crearMovimiento(InsumoDto dto, Date fecha, Long motivo) throws MotivoInvalidoException {
+		return this.crearMovimiento(dto.getId(), dto.getCantidad(), fecha, motivo);
+	}
+	
+	public MovimientoModel crearMovimiento(Long idInsumo, Double cantidad, Date fecha, Long motivo) throws MotivoInvalidoException {
 		if(motivo == 1) {
-			return new MovimientoResiduos(dto, fecha, motivo);
+			return new MovimientoResiduos(idInsumo, cantidad, fecha, motivo);
 		} else if (motivo == 2) {
-			return new MovimientoMalEstado(dto, fecha, motivo);
+			return new MovimientoMalEstado(idInsumo, cantidad, fecha, motivo);
 		} else if (motivo == 3) {
-			return new MovimientoSobras(dto, fecha, motivo);
+			return new MovimientoSobras(idInsumo, cantidad, fecha, motivo);
 		} else if (motivo == 4) {
-			return new MovimientoAjusteStock(dto, fecha, motivo);
+			return new MovimientoAjusteStock(idInsumo, cantidad, fecha, motivo);
 		} else if (motivo == 5) {
-			return new MovimientoCompra(dto, fecha, motivo);
+			return new MovimientoCompra(idInsumo, cantidad, fecha, motivo);
 		} else if (motivo == 6) {
-			return new MovimientoConsumo(dto, fecha, motivo);
+			return new MovimientoConsumo(idInsumo, cantidad, fecha, motivo);
 		}
 		throw new MotivoInvalidoException();
 	}
