@@ -29,6 +29,8 @@ public class OrdenCompraHeader implements Serializable{
 	
 	private Date fecha;
 	
+	private String factura;
+	
 	@ManyToOne
 	@JoinColumn(name = "id_proveedor")
 	private Proveedor proveedor;
@@ -54,6 +56,14 @@ public class OrdenCompraHeader implements Serializable{
 
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
+	}
+
+	public String getFactura() {
+		return factura;
+	}
+
+	public void setFactura(String factura) {
+		this.factura = factura;
 	}
 
 	public Proveedor getProveedor() {

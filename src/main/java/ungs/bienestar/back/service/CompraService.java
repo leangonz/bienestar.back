@@ -31,7 +31,7 @@ public class CompraService {
 	private MovimientoModelFactory movimientoModelFactory;
 	
 	public void guardarCompra(CompraDto dto) throws NotFoundException {
-		ordenCompraService.guardarConsumo(dto);
+		ordenCompraService.guardarCompra(dto);
 		List<MovimientoModel> models = dto.getItems().stream()
 				.map(LambdaExceptionWrapper.wrapper((CompraItemDto i) -> movimientoModelFactory.crearMovimiento(i.getInsumo(), i.getCantidad(), dto.getFecha(), 5l)))
 				.collect(Collectors.toList());
@@ -46,7 +46,7 @@ public class CompraService {
 	private CompraResumenDto mapper(OrdenCompraHeader compra) {
 		CompraResumenDto dto = new CompraResumenDto();
 		dto.setIdOC(compra.getIdOc());
-		//dto.setFactura(compra.getf);
+		dto.setFactura(compra.getFactura());
 		dto.setFecha(compra.getFecha());
 		dto.setProveedor(compra.getProveedor().getNombreProveedor());
 		//dto.setPrecioTotal(compra.get);

@@ -7,6 +7,8 @@ public class CompraDto {
 
 	private Date fecha;
 	
+	private String factura;
+	
 	private Long proveedor;
 	
 	private Long area;
@@ -21,6 +23,14 @@ public class CompraDto {
 
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
+	}
+
+	public String getFactura() {
+		return factura;
+	}
+
+	public void setFactura(String factura) {
+		this.factura = factura;
 	}
 
 	public Long getProveedor() {

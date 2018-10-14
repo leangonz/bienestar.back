@@ -23,7 +23,7 @@ public class OrdenCompraService {
 	@Autowired
 	private OrdenCompraFactory ordenCompraFactory;
 	
-	public OrdenCompraHeader guardarConsumo(CompraDto dto) throws NotFoundException {
+	public OrdenCompraHeader guardarCompra(CompraDto dto) throws NotFoundException {
 		OrdenCompraHeader ordenCompra = ordenCompraFactory.crearOrdenCompra(dto);
 		return ordenCompraRepository.save(ordenCompra);
 	}

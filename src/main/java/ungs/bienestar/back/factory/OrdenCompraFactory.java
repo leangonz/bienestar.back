@@ -30,6 +30,7 @@ public class OrdenCompraFactory {
 	public OrdenCompraHeader crearOrdenCompra(CompraDto dto) throws NotFoundException {
 		OrdenCompraHeader ordenCompra = new OrdenCompraHeader();
 		//TODO falta categoria?
+		ordenCompra.setFactura(dto.getFactura());
 		ordenCompra.setFecha(dto.getFecha());
 		ordenCompra.setProveedor(proveedorService.obtenerProveedorBy(dto.getProveedor()));
 		ordenCompra.setArea(areaService.obtenerAreaBy(dto.getArea()));
