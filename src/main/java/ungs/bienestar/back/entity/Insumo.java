@@ -7,13 +7,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "insumos")
-public class Insumo implements Serializable{
+public class Insumo implements Serializable {
 
 	/**
 	 * 
@@ -21,18 +22,19 @@ public class Insumo implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idInsumos;
-	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long idInsumos;
+
 	@NotBlank
 	private String descripcion;
-	
+
 	@ManyToOne
-    @JoinColumn(name="idUnidadMedida")
+	@JoinColumn(name = "idUnidadMedida")
 	private UnidadDeMedida unidadDeMedida;
-	
+
 	@ManyToOne
-    @JoinColumn(name="idCategoria")
+	@JoinColumns({ @JoinColumn(name = "id_categoria_principal", referencedColumnName = "id_categoria_principal"),
+			@JoinColumn(name = "id_categoria_secundaria", referencedColumnName = "id_categoria_secundaria") })
 	private Categoria categoria;
 
 	public Insumo() {
@@ -42,7 +44,6 @@ public class Insumo implements Serializable{
 		super();
 		this.idInsumos = idInsumos;
 	}
-
 
 	public Long getIdInsumos() {
 		return idInsumos;
@@ -75,5 +76,5 @@ public class Insumo implements Serializable{
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
-	
+
 }

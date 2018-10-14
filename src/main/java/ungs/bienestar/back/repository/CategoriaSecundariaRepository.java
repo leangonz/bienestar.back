@@ -3,9 +3,9 @@ package ungs.bienestar.back.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import ungs.bienestar.back.entity.CategoriaCompra;
+import ungs.bienestar.back.entity.CategoriaSecundaria;
 
 @Repository
-public interface CategoriaCompraRepository extends JpaRepository<CategoriaCompra, Long>{
+public interface CategoriaSecundariaRepository extends JpaRepository<CategoriaSecundaria, Long>{
 
 }

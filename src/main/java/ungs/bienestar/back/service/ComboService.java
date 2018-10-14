@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 import ungs.bienestar.back.dto.ComboDto;
 import ungs.bienestar.back.repository.AreaRepository;
-import ungs.bienestar.back.repository.CategoriaCompraRepository;
+import ungs.bienestar.back.repository.CategoriaPrincipalRepository;
 import ungs.bienestar.back.repository.CiudadRepository;
 import ungs.bienestar.back.repository.FormaDePagoRepository;
 import ungs.bienestar.back.repository.InsumoRepository;
@@ -39,7 +39,7 @@ public class ComboService {
 	private UnidadDeMedidaRepository unidadDeMedidaRepository;
 	
 	@Autowired
-	private CategoriaCompraRepository categoriaCompraRepository;
+	private CategoriaPrincipalRepository categoriaPrincipalRepository;
 	
 	@Autowired
 	private ProveedorRepository proveedorRepository;
@@ -87,7 +87,7 @@ public class ComboService {
 	}
 
 	public List<ComboDto> categoriaCompraItems() {
-		return categoriaCompraRepository.findAll().stream().map(m -> mapper(m::getIdCategoriaCompra, m::getCategoria))
+		return categoriaPrincipalRepository.findAll().stream().map(m -> mapper(m::getIdCategoriaPrincipal, m::getDescripcion))
 				.collect(Collectors.toList());
 	}
 

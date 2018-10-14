@@ -35,10 +35,6 @@ public class OrdenCompraDetalle implements Serializable{
     @JoinColumn(name="id_insumo")
 	private Insumo insumo;
 	
-	@ManyToOne
-    @JoinColumn(name="id_categoria_compra")
-	private CategoriaCompra categoriaCompra;
-	
 	private String insumoOtro;
 	
 	private Double cantidad;
@@ -75,14 +71,6 @@ public class OrdenCompraDetalle implements Serializable{
 
 	public void setInsumo(Insumo insumo) {
 		this.insumo = insumo;
-	}
-
-	public CategoriaCompra getCategoriaCompra() {
-		return categoriaCompra;
-	}
-
-	public void setCategoriaCompra(CategoriaCompra categoriaCompra) {
-		this.categoriaCompra = categoriaCompra;
 	}
 
 	public String getInsumoOtro() {

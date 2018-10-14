@@ -2,12 +2,11 @@ package ungs.bienestar.back.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "categorias")
@@ -18,27 +17,39 @@ public class Categoria implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idCategoria;
+	@EmbeddedId
+	private CategoriaId id;
 	
-	@NotBlank
-	private String descripcion;
+	@ManyToOne
+	@JoinColumn(name = "id_categoria_principal", insertable = false, updatable = false)
+	private CategoriaPrincipal categoriaPrincipal;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_categoria_secundaria", insertable = false, updatable = false)
+	private CategoriaSecundaria categoriaSecundaria;
 
-	public Long getIdCategoria() {
-		return idCategoria;
+	public CategoriaId getId() {
+		return id;
 	}
 
-	public void setIdCategoria(Long idCategoria) {
-		this.idCategoria = idCategoria;
+	public void setId(CategoriaId id) {
+		this.id = id;
 	}
 
-	public String getDescripcion() {
-		return descripcion;
+	public CategoriaPrincipal getCategoriaPrincipal() {
+		return categoriaPrincipal;
 	}
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	public void setCategoriaPrincipal(CategoriaPrincipal categoriaPrincipal) {
+		this.categoriaPrincipal = categoriaPrincipal;
+	}
+
+	public CategoriaSecundaria getCategoriaSecundaria() {
+		return categoriaSecundaria;
+	}
+
+	public void setCategoriaSecundaria(CategoriaSecundaria categoriaSecundaria) {
+		this.categoriaSecundaria = categoriaSecundaria;
 	}
 	
 }
