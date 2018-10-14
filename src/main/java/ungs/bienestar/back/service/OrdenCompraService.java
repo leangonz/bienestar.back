@@ -1,5 +1,7 @@
 package ungs.bienestar.back.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,5 +26,9 @@ public class OrdenCompraService {
 	public OrdenCompraHeader guardarConsumo(CompraDto dto) throws NotFoundException {
 		OrdenCompraHeader ordenCompra = ordenCompraFactory.crearOrdenCompra(dto);
 		return ordenCompraRepository.save(ordenCompra);
+	}
+
+	public List<OrdenCompraHeader> obtenerOrdenDeCompra(Long idProveedor) {
+		return ordenCompraRepository.findByProveedorIdProveedor(idProveedor);
 	}
 }
