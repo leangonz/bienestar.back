@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ungs.bienestar.back.dto.CompraDto;
+import ungs.bienestar.back.dto.CompraFilterDto;
 import ungs.bienestar.back.dto.CompraResumenDto;
 import ungs.bienestar.back.exception.NotFoundException;
 import ungs.bienestar.back.service.CompraService;
@@ -32,7 +33,7 @@ public class CompraController {
 	
 	@CrossOrigin(origins = "*")
 	@RequestMapping("/filtrarCompra")
-    public List<CompraResumenDto> filtrarCompra(@RequestBody Long idProveedor) {
-		return compraService.filtrarCompra(idProveedor);
+    public List<CompraResumenDto> filtrarCompra(@RequestBody CompraFilterDto filter) {
+		return compraService.filtrarCompra(filter);
     }
 }

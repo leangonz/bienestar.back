@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ungs.bienestar.back.dto.CompraDto;
+import ungs.bienestar.back.dto.CompraFilterDto;
 import ungs.bienestar.back.dto.CompraItemDto;
 import ungs.bienestar.back.dto.CompraResumenDto;
 import ungs.bienestar.back.entity.OrdenCompraHeader;
@@ -38,8 +39,8 @@ public class CompraService {
 		models.forEach(m -> movimientoService.generarMovimiento(m));
 	}
 
-	public List<CompraResumenDto> filtrarCompra(Long idProveedor) {
-		List<CompraResumenDto> compras = ordenCompraService.obtenerOrdenDeCompra(idProveedor).stream().map(oc -> mapper(oc)).collect(Collectors.toList());
+	public List<CompraResumenDto> filtrarCompra(CompraFilterDto dto) {
+		List<CompraResumenDto> compras = ordenCompraService.obtenerOrdenDeCompra(dto).stream().map(oc -> mapper(oc)).collect(Collectors.toList());
 		return compras;
 	}
 	

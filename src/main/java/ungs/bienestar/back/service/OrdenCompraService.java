@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ungs.bienestar.back.dto.CompraDto;
+import ungs.bienestar.back.dto.CompraFilterDto;
 import ungs.bienestar.back.entity.OrdenCompraHeader;
 import ungs.bienestar.back.exception.NotFoundException;
 import ungs.bienestar.back.factory.OrdenCompraFactory;
@@ -28,7 +29,7 @@ public class OrdenCompraService {
 		return ordenCompraRepository.save(ordenCompra);
 	}
 
-	public List<OrdenCompraHeader> obtenerOrdenDeCompra(Long idProveedor) {
-		return ordenCompraRepository.findByProveedorIdProveedor(idProveedor);
+	public List<OrdenCompraHeader> obtenerOrdenDeCompra(CompraFilterDto dto) {
+		return ordenCompraRepository.findByParams(dto.getIdProveedor(), dto.getFactura());
 	}
 }
