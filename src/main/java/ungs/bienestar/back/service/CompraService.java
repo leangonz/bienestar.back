@@ -49,7 +49,7 @@ public class CompraService {
 		dto.setFactura(compra.getFactura());
 		dto.setFecha(compra.getFecha());
 		dto.setProveedor(compra.getProveedor().getNombreProveedor());
-		//dto.setPrecioTotal(compra.get);
+		dto.setPrecioTotal(compra.getTotal().toString());
 		return dto;
 	}
 

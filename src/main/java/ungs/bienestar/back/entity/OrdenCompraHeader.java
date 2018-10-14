@@ -42,6 +42,8 @@ public class OrdenCompraHeader implements Serializable{
 	@OneToMany(mappedBy = "header", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<OrdenCompraDetalle> detalle;
 
+	private Double total;
+	
 	public Long getIdOc() {
 		return idOc;
 	}
@@ -93,6 +95,14 @@ public class OrdenCompraHeader implements Serializable{
 	public void addCompraItem(OrdenCompraDetalle item) {
 		this.detalle.add(item);
 		item.setHeader(this);
+	}
+
+	public Double getTotal() {
+		return total;
+	}
+
+	public void setTotal(Double total) {
+		this.total = total;
 	}
 	
 }

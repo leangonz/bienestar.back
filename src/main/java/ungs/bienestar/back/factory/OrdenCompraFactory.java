@@ -36,6 +36,7 @@ public class OrdenCompraFactory {
 		ordenCompra.setArea(areaService.obtenerAreaBy(dto.getArea()));
 		ordenCompra.setDetalle(new ArrayList<>());
 		dto.getItems().forEach(ConsumerWithException.wrapper(item -> ordenCompra.addCompraItem(this.crearCompraDetalle(item))));
+		ordenCompra.setTotal(ordenCompra.getDetalle().stream().mapToDouble(d -> d.getCantidad() * d.getPrecioUnitario()).sum());
 		return ordenCompra;
 	}
 	
