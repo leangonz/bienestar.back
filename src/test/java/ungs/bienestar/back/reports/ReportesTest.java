@@ -58,7 +58,7 @@ public class ReportesTest {
 		Report reporte = reportesFactory.obtenerReporteTemplate(1l);
 		Map<String, String> filters = new HashMap<>();
 		filters.put("anio", "2018");
-		List<Row> s = reporte.body(filters);
+		List<Fila> s = reporte.body(filters);
 		System.out.println(s);
 	}
 }

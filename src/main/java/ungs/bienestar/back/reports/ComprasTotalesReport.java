@@ -23,13 +23,13 @@ public class ComprasTotalesReport extends Report {
 	}
 
 	@Override
-	public List<Row> body(Map<String, String> filters) {
+	public List<Fila> body(Map<String, String> filters) {
 		List<CategoriaMesAnioView> rows = repository.findByAnio(Integer.valueOf(filters.get("anio")));
 		return rows.stream().map(x -> this.mapper(x)).collect(Collectors.toList());
 	}
 
-	private Row mapper(CategoriaMesAnioView item) {
-		Row row = new Row();
+	private Fila mapper(CategoriaMesAnioView item) {
+		Fila row = new Fila();
 		row.addCell(item.getCategoria());
 		row.addCell(item.getEnero().toString());
 		row.addCell(item.getFebrero().toString());
@@ -43,8 +43,6 @@ public class ComprasTotalesReport extends Report {
 		row.addCell(item.getOctubre().toString());
 		row.addCell(item.getNoviembre().toString());
 		row.addCell(item.getDiciembre().toString());
-		row.addCell(item.getAnio().toString());
-
 		return row;
 	}
 }

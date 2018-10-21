@@ -12,7 +12,7 @@ public abstract class Report {
 	
 	private List<String> filters;
 	
-	public abstract List<Row> body(Map<String, String> filters);
+	public abstract List<Fila> body(Map<String, String> filters);
 
 	public List<String> header(){
 		return header;
