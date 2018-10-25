@@ -29,8 +29,6 @@ public class ReporteController {
 		Resource resource;
 		try {
 			resource = reporteService.exportReporte(params);
-			response.setContentType("application/vnd.ms-excel");
-			response.setHeader("Content-disposition", "attachment; filename=" + resource.getFilename());
 			return ResponseEntity.ok()
 			        .header("Content-disposition", "attachment; filename=Compras_Totales.xlsx") // add headers if any
 			        .contentLength(resource.contentLength())
