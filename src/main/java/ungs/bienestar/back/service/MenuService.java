@@ -41,4 +41,8 @@ public class MenuService {
 		menu.getInsumos().addAll(insumos.stream().map(LambdaExceptionWrapper.wrapper(i -> insumoService.obtenerInsumoBy(i.getId()))).collect(Collectors.toList()));
 		menuRepository.save(menu);
 	}
+	
+	public Menue obtenerMenue(Long id) throws NotFoundException {
+		return menuRepository.findById(id).orElseThrow(() -> new NotFoundException(Entity.MENU, id));
+	}
 }
