@@ -29,7 +29,7 @@ public class HistorialDescarteReport extends Report {
 	}
 
 	private Fila mapper(HistorialDescarteView item) {
-		Fila row = new Fila();
+		Fila row = new Fila(0);
 		row.addCell(item.getMenu());
 		row.addCell(item.getEnero().toString());
 		row.addCell(item.getFebrero().toString());

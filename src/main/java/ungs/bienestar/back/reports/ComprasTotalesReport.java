@@ -29,7 +29,7 @@ public class ComprasTotalesReport extends Report {
 	}
 
 	private Fila mapper(CategoriaMesAnioView item) {
-		Fila row = new Fila();
+		Fila row = new Fila(0);
 		row.addCell(item.getCategoria());
 		row.addCell(item.getEnero().toString());
 		row.addCell(item.getFebrero().toString());

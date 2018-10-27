@@ -52,7 +52,7 @@ public class EvolucionComprasReport extends Report{
 	}
 
 	private Fila mapper(EvolucionPreciosView item) {
-		Fila row = new Fila();
+		Fila row = new Fila(0);
 		row.addCell(item.getInsumo());
 		row.addCell(item.getPrecio().toString());
 		row.addCell(sdf.format(item.getFecha()));

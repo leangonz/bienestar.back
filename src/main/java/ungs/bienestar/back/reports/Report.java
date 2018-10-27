@@ -9,16 +9,17 @@ public abstract class Report {
 	public static final Integer COMPRAS_TOTALES = 1;
 	public static final Integer EVOLUCION_PRECIOS = 2;
 	public static final Integer HISTORIAL_DESCARTE = 3;
+	public static final Integer CONSUMOS_TOTALES = 4;
 	
 	public static Map<Integer, Report> instanciasRegistradas = new HashMap<>();
 	
-	private List<String> header;
+	private Fila header;
 	
 	private List<String> filters;
 	
 	public abstract List<Fila> body(Map<String, String> filters);
 
-	public List<String> header(){
+	public Fila header(){
 		return header;
 	}
 	
@@ -27,7 +28,8 @@ public abstract class Report {
 	}
 	
 	protected Report(List<String> header, List<String> filters, Integer idReporte) {
-		this.header = header;
+		this.header = new Fila(0);
+		header.forEach(this.header::addCell);
 		this.filters = filters;
 		instanciasRegistradas.put(idReporte, this);
 	}

@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ExcelGenerator {
 
-	public Workbook generateExcel(List<String> header, List<Fila> rows) {
+	public Workbook generateExcel(Fila header, List<Fila> rows) {
 		Workbook workbook = new XSSFWorkbook();
 		Sheet sheet = workbook.createSheet();
 
@@ -35,20 +35,21 @@ public class ExcelGenerator {
 
 		Row headerRow = sheet.createRow(0);
 		this.populateRow(headerRow, header, headerStyle);
-		IntStream.range(0, 14).forEach(x -> sheet.autoSizeColumn(x));
+		IntStream.range(0, header.getCells().size()).forEach(x -> sheet.autoSizeColumn(x));
 		
 		Integer rowIndex = 1;
 		for (Fila fila : rows) {
 			Row row = sheet.createRow(rowIndex);
-			this.populateRow(row, fila.getCells(),rowIndex %2 == 0 ? oddRowStyle : evenRowStyle);
+			this.populateRow(row, fila,rowIndex %2 == 0 ? oddRowStyle : evenRowStyle);
 			rowIndex++;
 		}
 		return workbook;
 	}
 
-	private void populateRow(Row row, List<String> list, CellStyle style) {
-		Integer columnIndex = 0;
-		for (String value : list) {
+	
+	private void populateRow(Row row, Fila fila, CellStyle style) {
+		Integer columnIndex = fila.getInitialColumnNumber();
+		for (String value : fila.getCells()) {
 			Cell cell = row.createCell(columnIndex);
 			cell.setCellValue(value);
 			cell.setCellStyle(style);

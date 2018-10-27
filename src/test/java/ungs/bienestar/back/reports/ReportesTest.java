@@ -30,20 +30,20 @@ public class ReportesTest {
 	@Test
 	public void headersReporteCompra() {
 		Report reporte = reportesFactory.obtenerReporteTemplate(Report.COMPRAS_TOTALES);
-		Assert.assertEquals(reporte.header().size(), 13);
-		Assert.assertEquals(reporte.header().get(0), "Categoria");
-		Assert.assertEquals(reporte.header().get(1), "Enero");
-		Assert.assertEquals(reporte.header().get(2), "Febrero");
-		Assert.assertEquals(reporte.header().get(3), "Marzo");
-		Assert.assertEquals(reporte.header().get(4), "Abril");
-		Assert.assertEquals(reporte.header().get(5), "Mayo");
-		Assert.assertEquals(reporte.header().get(6), "Junio");
-		Assert.assertEquals(reporte.header().get(7), "Julio");
-		Assert.assertEquals(reporte.header().get(8), "Agosto");
-		Assert.assertEquals(reporte.header().get(9), "Septiembre");
-		Assert.assertEquals(reporte.header().get(10), "Octubre");
-		Assert.assertEquals(reporte.header().get(11), "Noviembre");
-		Assert.assertEquals(reporte.header().get(12), "Diciembre");
+		Assert.assertEquals(reporte.header().getCells().size(), 13);
+		Assert.assertEquals(reporte.header().getCells().get(0), "Categoria");
+		Assert.assertEquals(reporte.header().getCells().get(1), "Enero");
+		Assert.assertEquals(reporte.header().getCells().get(2), "Febrero");
+		Assert.assertEquals(reporte.header().getCells().get(3), "Marzo");
+		Assert.assertEquals(reporte.header().getCells().get(4), "Abril");
+		Assert.assertEquals(reporte.header().getCells().get(5), "Mayo");
+		Assert.assertEquals(reporte.header().getCells().get(6), "Junio");
+		Assert.assertEquals(reporte.header().getCells().get(7), "Julio");
+		Assert.assertEquals(reporte.header().getCells().get(8), "Agosto");
+		Assert.assertEquals(reporte.header().getCells().get(9), "Septiembre");
+		Assert.assertEquals(reporte.header().getCells().get(10), "Octubre");
+		Assert.assertEquals(reporte.header().getCells().get(11), "Noviembre");
+		Assert.assertEquals(reporte.header().getCells().get(12), "Diciembre");
 	}
 	
 	@Test

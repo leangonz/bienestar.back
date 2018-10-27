@@ -29,7 +29,7 @@ public class ReporteService {
 	
 	public Resource exportReporte(Map<String, String> params) throws IOException {
 		Report template = reportesFactory.obtenerReporteTemplate(Integer.valueOf(params.get("type")));
-		List<String> header = template.header();
+		Fila header = template.header();
 		List<Fila> rows = template.body(params);
 		Workbook workbook = excelGenerator.generateExcel(header, rows);
 		return writer.export(workbook);
