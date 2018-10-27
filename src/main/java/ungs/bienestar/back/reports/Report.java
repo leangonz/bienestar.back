@@ -6,7 +6,10 @@ import java.util.Map;
 
 public abstract class Report {
 	
-	public static Map<Long, Report> instanciasRegistradas = new HashMap<>();
+	public static final Integer COMPRAS_TOTALES = 1;
+	public static final Integer EVOLUCION_PRECIOS = 2;
+	
+	public static Map<Integer, Report> instanciasRegistradas = new HashMap<>();
 	
 	private List<String> header;
 	
@@ -22,10 +25,10 @@ public abstract class Report {
 		return filters;
 	}
 	
-	protected Report(List<String> header, List<String> filters) {
+	protected Report(List<String> header, List<String> filters, Integer idReporte) {
 		this.header = header;
 		this.filters = filters;
-		instanciasRegistradas.put(1l, this);
+		instanciasRegistradas.put(idReporte, this);
 	}
 	
 }

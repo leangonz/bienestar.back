@@ -25,12 +25,12 @@ public class ReporteController {
 	
 	@CrossOrigin(origins = "*")
 	@GetMapping("/comprasTotales")
-    public ResponseEntity<Resource> ajustarStock(HttpServletResponse response, @RequestParam Map<String, String> params) {
+    public ResponseEntity<Resource> comprasTotales(HttpServletResponse response, @RequestParam Map<String, String> params) {
 		Resource resource;
 		try {
 			resource = reporteService.exportReporte(params);
 			return ResponseEntity.ok()
-			        .header("Content-disposition", "attachment; filename=Compras_Totales.xlsx") // add headers if any
+			        .header("Content-disposition", "attachment; filename=Compras_Totales.xlsx")
 			        .contentLength(resource.contentLength())
 			        .contentType(MediaType.parseMediaType("application/vnd.ms-excel"))
 			        .body(resource);

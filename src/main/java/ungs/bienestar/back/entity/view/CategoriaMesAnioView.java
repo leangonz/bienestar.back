@@ -1,4 +1,4 @@
-package ungs.bienestar.back.entity;
+package ungs.bienestar.back.entity.view;
 
 import java.io.Serializable;
 

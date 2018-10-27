@@ -28,7 +28,7 @@ public class ReporteService {
 	private ResourceWriter writer;
 	
 	public Resource exportReporte(Map<String, String> params) throws IOException {
-		Report template = reportesFactory.obtenerReporteTemplate(Long.valueOf(params.get("type")));
+		Report template = reportesFactory.obtenerReporteTemplate(Integer.valueOf(params.get("type")));
 		List<String> header = template.header();
 		List<Fila> rows = template.body(params);
 		Workbook workbook = excelGenerator.generateExcel(header, rows);

@@ -23,13 +23,13 @@ public class ReportesTest {
 	
 	@Test
 	public void getInstanciaReporteCompra() {
-		Report reporte = reportesFactory.obtenerReporteTemplate(1l);
+		Report reporte = reportesFactory.obtenerReporteTemplate(Report.COMPRAS_TOTALES);
 		Assert.assertThat(reporte, IsInstanceOf.instanceOf(ComprasTotalesReport.class));
 	}
 	
 	@Test
 	public void headersReporteCompra() {
-		Report reporte = reportesFactory.obtenerReporteTemplate(1l);
+		Report reporte = reportesFactory.obtenerReporteTemplate(Report.COMPRAS_TOTALES);
 		Assert.assertEquals(reporte.header().size(), 13);
 		Assert.assertEquals(reporte.header().get(0), "Categoria");
 		Assert.assertEquals(reporte.header().get(1), "Enero");
@@ -48,14 +48,14 @@ public class ReportesTest {
 	
 	@Test
 	public void filtersReporteCompra() {
-		Report reporte = reportesFactory.obtenerReporteTemplate(1l);
+		Report reporte = reportesFactory.obtenerReporteTemplate(Report.COMPRAS_TOTALES);
 		Assert.assertEquals(reporte.filters().size(), 1);
 		Assert.assertEquals(reporte.filters().get(0), "anio");
 	}
 	
 	@Test
 	public void bodyReporteCompra() {
-		Report reporte = reportesFactory.obtenerReporteTemplate(1l);
+		Report reporte = reportesFactory.obtenerReporteTemplate(Report.COMPRAS_TOTALES);
 		Map<String, String> filters = new HashMap<>();
 		filters.put("anio", "2018");
 		List<Fila> s = reporte.body(filters);

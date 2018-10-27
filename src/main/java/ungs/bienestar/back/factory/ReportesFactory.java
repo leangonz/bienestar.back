@@ -7,7 +7,8 @@ import ungs.bienestar.back.reports.Report;
 @Component
 public class ReportesFactory {
 
-	public Report obtenerReporteTemplate(Long type) {
+	//FIXME esto no es un factory, transformarlo en un registry
+	public Report obtenerReporteTemplate(Integer type) {
 		return Report.instanciasRegistradas.get(type);
 	}
 	

@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import ungs.bienestar.back.entity.CategoriaMesAnioView;
+import ungs.bienestar.back.entity.view.CategoriaMesAnioView;
 import ungs.bienestar.back.repository.CategoriaMesAnioViewRepository;
 
 @Component
@@ -19,7 +19,7 @@ public class ComprasTotalesReport extends Report {
 
 	public ComprasTotalesReport() {
 		super(Arrays.asList("Categoria", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto",
-				"Septiembre", "Octubre", "Noviembre", "Diciembre"), Arrays.asList("anio"));
+				"Septiembre", "Octubre", "Noviembre", "Diciembre"), Arrays.asList("anio"), COMPRAS_TOTALES);
 	}
 
 	@Override
