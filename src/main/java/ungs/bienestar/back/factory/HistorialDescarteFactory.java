@@ -21,7 +21,7 @@ public class HistorialDescarteFactory {
 	private MenuService menuService;
 
 	public List<HistorialDescarte> crearHistorialDescarte(DescarteDto descarte) {
-		List<HistorialDescarte> historiales = descarte.getMenuCantidad().stream()
+		List<HistorialDescarte> historiales = descarte.getMenues().stream()
 				.map(LambdaExceptionWrapper.wrapper(x -> mapper(x, descarte.getFecha()))).collect(Collectors.toList());
 		return historiales;
 	}

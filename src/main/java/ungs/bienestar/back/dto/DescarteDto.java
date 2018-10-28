@@ -7,7 +7,7 @@ public class DescarteDto {
 
 	private Date fecha;
 	
-	private List<MenuCantidadDto> menuCantidad;
+	private List<MenuCantidadDto> menues;
 
 	public Date getFecha() {
 		return fecha;
@@ -17,12 +17,12 @@ public class DescarteDto {
 		this.fecha = fecha;
 	}
 
-	public List<MenuCantidadDto> getMenuCantidad() {
-		return menuCantidad;
+	public List<MenuCantidadDto> getMenues() {
+		return menues;
 	}
 
-	public void setMenuCantidad(List<MenuCantidadDto> menuCantidad) {
-		this.menuCantidad = menuCantidad;
+	public void setMenues(List<MenuCantidadDto> menuCantidad) {
+		this.menues = menuCantidad;
 	}
 	
 }

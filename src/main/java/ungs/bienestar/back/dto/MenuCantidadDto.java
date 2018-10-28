@@ -4,6 +4,8 @@ public class MenuCantidadDto {
 
 	private Long idMenu;
 	
+	private String descripcion;
+	
 	private Double cantidad;
 
 	public Long getIdMenu() {
@@ -12,6 +14,14 @@ public class MenuCantidadDto {
 
 	public void setIdMenu(Long idMenu) {
 		this.idMenu = idMenu;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
 	public Double getCantidad() {
