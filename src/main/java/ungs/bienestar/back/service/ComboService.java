@@ -82,7 +82,7 @@ public class ComboService {
 	
 	//FIXME hacerlo mejor
 	private Boolean isMotivoAjustable(Long idMotivo) {
-		List<Long> motivosAjustables = Arrays.asList(1l,2l,3l,4l);
+		List<Long> motivosAjustables = Arrays.asList(1l,2l,4l);
 		return motivosAjustables.contains(idMotivo);
 	}
 
