@@ -3,6 +3,7 @@ package ungs.bienestar.back.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,7 @@ public class CompraController {
 	
 	@CrossOrigin(origins = "*")
 	@RequestMapping("/cargarCompra")
+	@PreAuthorize("hasAuthority('cargarCompra')")
     public Boolean cargarCompra(@RequestBody CompraDto dto) {
         try {
 			compraService.guardarCompra(dto);
@@ -33,6 +35,7 @@ public class CompraController {
 	
 	@CrossOrigin(origins = "*")
 	@RequestMapping("/filtrarCompra")
+	@PreAuthorize("hasAuthority('cargarCompra')")
     public List<CompraResumenDto> filtrarCompra(@RequestBody CompraFilterDto filter) {
 		return compraService.filtrarCompra(filter);
     }

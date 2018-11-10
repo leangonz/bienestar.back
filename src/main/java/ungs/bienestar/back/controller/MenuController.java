@@ -3,6 +3,7 @@ package ungs.bienestar.back.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,6 +22,7 @@ public class MenuController {
 	
 	@CrossOrigin(origins = "*")
 	@PostMapping("/crearMenu")
+	@PreAuthorize("hasAuthority('abmMenu')")
     public Boolean crearMenu(@RequestBody PreparacionDto dto) {
 		menuService.crearMenu(dto);
         return true;
@@ -28,6 +30,7 @@ public class MenuController {
 	
 	@CrossOrigin(origins = "*")
 	@PostMapping("/actualizarMenu")
+	@PreAuthorize("hasAuthority('abmMenu')")
     public Boolean actualizarMenu(@RequestBody List<InsumoDto> insumos, Long idMenu) throws NotFoundException {
 		menuService.modificarMenu(idMenu, insumos);
         return true;

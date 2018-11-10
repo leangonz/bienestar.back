@@ -1,6 +1,7 @@
 package ungs.bienestar.back.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,6 +23,7 @@ public class StockController {
 	
 	@CrossOrigin(origins = "*")
 	@PostMapping("/ajustarStock")
+	@PreAuthorize("hasAuthority('ajustarStock')")
     public Boolean ajustarStock(@RequestBody AjusteStockDto dto) {
 		ajusteStockService.ajustarStock(dto);
         return true;
@@ -29,6 +31,7 @@ public class StockController {
 	
 	@CrossOrigin(origins = "*")
 	@PostMapping("/consultarStock")
+	@PreAuthorize("hasAuthority('consultarStock')")
     public StockDto consultarStock(@RequestBody Long idInsumo) {
 		return stockService.consultarStock(idInsumo);
     }

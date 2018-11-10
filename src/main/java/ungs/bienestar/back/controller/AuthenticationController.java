@@ -20,6 +20,12 @@ public class AuthenticationController {
         return userDetailsToUsuarioDto(authentication.getName(), authentication.getAuthorities());
     }
 
+	@CrossOrigin(origins = "*")
+	@RequestMapping("/loginError")
+    public UsuarioDto error() {
+        return null;
+    }
+	
 	private UsuarioDto userDetailsToUsuarioDto(String username, Collection<? extends GrantedAuthority> authorities) {
 		UsuarioDto dto = new UsuarioDto();
 		dto.setUsername(username);

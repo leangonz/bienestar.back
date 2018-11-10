@@ -1,6 +1,7 @@
 package ungs.bienestar.back.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ public class ProveedorController {
 	
 	@CrossOrigin(origins = "*")
 	@RequestMapping("/crearProveedor")
+	@PreAuthorize("hasAuthority('abmProveedor')")
     public Boolean crearProveedor(@RequestBody ProveedorDto dto) {
 		proveedorService.crearProveedor(dto);
         return true;
