@@ -93,4 +93,11 @@ public class ComboController {
     public List<ComboDto> comboAreas() {
         return comboService.areaItems();
     }
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping("/comboComidasDia")
+	@PreAuthorize("isAuthenticated()")
+    public List<ComboDto> comboComidasDia() {
+        return comboService.comidaDiaItems();
+    }
 }

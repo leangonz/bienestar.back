@@ -17,6 +17,7 @@ import ungs.bienestar.back.repository.CiudadRepository;
 import ungs.bienestar.back.repository.FormaDePagoRepository;
 import ungs.bienestar.back.repository.InsumoRepository;
 import ungs.bienestar.back.repository.MenueRepository;
+import ungs.bienestar.back.repository.MomentoDelDiaRepository;
 import ungs.bienestar.back.repository.MotivoRepository;
 import ungs.bienestar.back.repository.ProveedorRepository;
 import ungs.bienestar.back.repository.TipoDeMenueRepository;
@@ -55,6 +56,9 @@ public class ComboService {
 	
 	@Autowired
 	private AreaRepository areaRepository;
+	
+	@Autowired
+	private MomentoDelDiaRepository momentoDeDiaRepository;
 	
 	public List<ComboDto> menuesItems() {
 		return menueRepository.findAll().stream().map(m -> mapper(m::getIdMenues, m::getDescripcion))
@@ -113,6 +117,11 @@ public class ComboService {
 	
 	public List<ComboDto> areaItems() {
 		return areaRepository.findAll().stream().map(m -> mapper(m::getIdArea, m::getDescripcion))
+				.collect(Collectors.toList());
+	}
+
+	public List<ComboDto> comidaDiaItems() {
+		return momentoDeDiaRepository.findAll().stream().map(m -> mapper(m::getId, m::getDescripcion))
 				.collect(Collectors.toList());
 	}
 	

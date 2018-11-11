@@ -12,6 +12,7 @@ public class ConsumoRealizadoDto {
 	private Integer tresAnios;
 	private Integer cuatroCincoAnios;
 	private Integer adultos;
+	private Long momentoDelDia;
 	private List<InsumoDto> insumos;
 	
 	public Date getFecha() {
@@ -61,5 +62,11 @@ public class ConsumoRealizadoDto {
 	}
 	public void setInsumos(List<InsumoDto> insumos) {
 		this.insumos = insumos;
+	}
+	public Long getMomentoDelDia() {
+		return momentoDelDia;
+	}
+	public void setMomentoDelDia(Long momentoDelDia) {
+		this.momentoDelDia = momentoDelDia;
 	}
 }

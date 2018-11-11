@@ -49,6 +49,10 @@ public class Consumo implements Serializable {
 	@NotNull
 	private Integer cantidadAdultos = 0;
 
+	@ManyToOne
+	@JoinColumn(name = "id_momento")
+	private MomentoDelDia momentoDelDia;
+	
 	@OneToMany(mappedBy = "consumo", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ConsumoDetalle> consumosDetalle;
 
@@ -139,6 +143,14 @@ public class Consumo implements Serializable {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public MomentoDelDia getMomentoDelDia() {
+		return momentoDelDia;
+	}
+
+	public void setMomentoDelDia(MomentoDelDia momentoDelDia) {
+		this.momentoDelDia = momentoDelDia;
 	}
 
 }
