@@ -6,7 +6,7 @@ public class PreparacionDto {
 
 	private String nombreMenu;
 	
-	private Integer tipoMenu;
+	private Long tipoMenu;
 	
 	private List<InsumoDto> insumos;
 
@@ -18,11 +18,11 @@ public class PreparacionDto {
 		this.nombreMenu = nombreMenu;
 	}
 
-	public Integer getTipoMenu() {
+	public Long getTipoMenu() {
 		return tipoMenu;
 	}
 
-	public void setTipoMenu(Integer tipoMenu) {
+	public void setTipoMenu(Long tipoMenu) {
 		this.tipoMenu = tipoMenu;
 	}
 
