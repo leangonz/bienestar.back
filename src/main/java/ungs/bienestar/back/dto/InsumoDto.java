@@ -8,7 +8,11 @@ public class InsumoDto {
 	
 	private Double cantidad;
 	
+	private Long idUnidadMedida;
+	
 	private String unidadDeMedida;
+	
+	private CategoriaDto categoria;
 	
 	public Long getId() {
 		return id;
@@ -40,6 +44,22 @@ public class InsumoDto {
 
 	public void setUnidadDeMedida(String unidadDeMedida) {
 		this.unidadDeMedida = unidadDeMedida;
+	}
+
+	public CategoriaDto getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(CategoriaDto categoria) {
+		this.categoria = categoria;
+	}
+
+	public Long getIdUnidadMedida() {
+		return idUnidadMedida;
+	}
+
+	public void setIdUnidadMedida(Long idUnidadMedida) {
+		this.idUnidadMedida = idUnidadMedida;
 	}
 
 }

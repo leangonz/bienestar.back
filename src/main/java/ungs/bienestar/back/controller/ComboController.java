@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import ungs.bienestar.back.dto.CategoriaDto;
 import ungs.bienestar.back.dto.ComboDto;
+import ungs.bienestar.back.service.CategoriaService;
 import ungs.bienestar.back.service.ComboService;
 
 @RestController
@@ -16,6 +18,9 @@ public class ComboController {
 
 	@Autowired
 	private ComboService comboService;
+	
+	@Autowired
+	private CategoriaService categoriaService;
 	
 	@CrossOrigin(origins = "*")
 	@RequestMapping("/comboMenue")
@@ -36,6 +41,13 @@ public class ComboController {
 	@PreAuthorize("isAuthenticated()")
     public List<ComboDto> comboMotivosAjustables() {
         return comboService.motivoAjustableItems();
+    }
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping("/comboCategoriasComedor")
+	@PreAuthorize("isAuthenticated()")
+    public List<CategoriaDto> comboCategoriasComedor() {
+        return categoriaService.categoriasDeComedorItems();
     }
 	
 	@CrossOrigin(origins = "*")

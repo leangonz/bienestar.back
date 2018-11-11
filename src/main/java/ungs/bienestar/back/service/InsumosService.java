@@ -13,6 +13,7 @@ import ungs.bienestar.back.dto.InsumoDto;
 import ungs.bienestar.back.entity.Insumo;
 import ungs.bienestar.back.exception.Entity;
 import ungs.bienestar.back.exception.NotFoundException;
+import ungs.bienestar.back.factory.InsumoFactory;
 import ungs.bienestar.back.repository.InsumoRepository;
 import ungs.bienestar.back.repository.MenueRepository;
 
@@ -25,6 +26,9 @@ public class InsumosService {
 
 	@Autowired
 	private InsumoRepository insumoRepository;
+	
+	@Autowired
+	private InsumoFactory insumoFactory;
 
 	public List<InsumoDto> obtenerInsumosPorMenu(Long idMenue) {
 		List<Insumo> menue = menueRepository.findById(idMenue).map(m -> m.getInsumos()).orElseGet(ArrayList::new);
@@ -39,6 +43,11 @@ public class InsumosService {
 		return insumoRepository.findById(id).orElseThrow(() -> new NotFoundException(Entity.INSUMO, id));
 	}
 
+	public void crearInsumo(InsumoDto dto) {
+		Insumo insumo =  insumoFactory.crearInsumo(dto);
+		insumoRepository.save(insumo);
+	}
+	
 	private InsumoDto mapper(Insumo insumo) {
 		InsumoDto dto = new InsumoDto();
 		dto.setId(insumo.getIdInsumos());

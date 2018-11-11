@@ -19,6 +19,15 @@ public class CategoriaId implements Serializable{
 	@Column(name = "id_categoria_secundaria")
 	private Long idCategoriaSecundaria;
 
+	public CategoriaId(Long idCategoriaPrincipal, Long idCategoriaSecundaria) {
+		super();
+		this.idCategoriaPrincipal = idCategoriaPrincipal;
+		this.idCategoriaSecundaria = idCategoriaSecundaria;
+	}
+
+	public CategoriaId() {
+	}
+	
 	public Long getIdCategoriaPrincipal() {
 		return idCategoriaPrincipal;
 	}
