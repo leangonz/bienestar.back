@@ -10,6 +10,7 @@ public abstract class Report {
 	public static final Integer EVOLUCION_PRECIOS = 2;
 	public static final Integer HISTORIAL_DESCARTE = 3;
 	public static final Integer CONSUMOS_TOTALES = 4;
+	public static final Integer GRUPO_ETARIO = 5;
 	
 	public static Map<Integer, Report> instanciasRegistradas = new HashMap<>();
 	
