@@ -1,5 +1,8 @@
 package ungs.bienestar.back.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +37,20 @@ public class ProveedorService {
 	
 	public Proveedor obtenerProveedorBy(Long id) throws NotFoundException {
 		return proveedorRepository.findById(id).orElseThrow(() -> new NotFoundException(Entity.PROVEEDOR, id));
+	}
+
+	public List<ProveedorDto> filtrarProveedor(Long filter) throws NotFoundException {
+		List<ProveedorDto> proveedores = new ArrayList<>();
+		proveedores.add(this.toDto(this.obtenerProveedorBy(filter)));
+		return proveedores;
+	}
+	
+	private ProveedorDto toDto(Proveedor proveedor) {
+		ProveedorDto dto = new ProveedorDto();
+		dto.setId(proveedor.getIdProveedor());
+		dto.setNombre(proveedor.getNombreProveedor());
+		dto.setCuit(proveedor.getCuit());
+		dto.setTelefono(proveedor.getTelefono());
+		return dto;
 	}
 }

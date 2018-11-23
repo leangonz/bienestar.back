@@ -2,6 +2,8 @@ package ungs.bienestar.back.dto;
 
 public class ProveedorDto {
 
+	private Long id;
+	
 	private String nombre;
 	
 	private String cuit;
@@ -90,6 +92,14 @@ public class ProveedorDto {
 
 	public void setFormaDePago(Long formaDePago) {
 		this.formaDePago = formaDePago;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 }
