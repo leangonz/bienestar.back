@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ungs.bienestar.back.dto.ProveedorDto;
+import ungs.bienestar.back.dto.ProveedorFilterDto;
 import ungs.bienestar.back.exception.NotFoundException;
 import ungs.bienestar.back.service.ProveedorService;
 
@@ -30,7 +31,7 @@ public class ProveedorController {
 	@CrossOrigin(origins = "*")
 	@RequestMapping("/filtrarProveedor")
 	@PreAuthorize("hasAuthority('abmProveedor')")
-    public List<ProveedorDto> filtrarCompra(@RequestBody Long idProveedor) throws NotFoundException {
-		return proveedorService.filtrarProveedor(idProveedor);
+    public List<ProveedorDto> filtrarCompra(@RequestBody ProveedorFilterDto filter) throws NotFoundException {
+		return proveedorService.filtrarProveedor(filter.getIdProveedor());
     }
 }

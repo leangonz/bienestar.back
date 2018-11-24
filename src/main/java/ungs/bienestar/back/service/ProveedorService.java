@@ -1,7 +1,7 @@
 package ungs.bienestar.back.service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
@@ -40,9 +40,7 @@ public class ProveedorService {
 	}
 
 	public List<ProveedorDto> filtrarProveedor(Long filter) throws NotFoundException {
-		List<ProveedorDto> proveedores = new ArrayList<>();
-		proveedores.add(this.toDto(this.obtenerProveedorBy(filter)));
-		return proveedores;
+		return proveedorRepository.findByParams(filter).stream().map(x -> this.toDto(x)).collect(Collectors.toList());
 	}
 	
 	private ProveedorDto toDto(Proveedor proveedor) {
