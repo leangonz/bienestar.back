@@ -4,9 +4,13 @@ import java.util.List;
 
 public class PreparacionDto {
 
+	private Long idMenu;
+	
 	private String nombreMenu;
 	
 	private Long tipoMenu;
+	
+	private String descTipo;
 	
 	private List<InsumoDto> insumos;
 
@@ -32,6 +36,22 @@ public class PreparacionDto {
 
 	public void setInsumos(List<InsumoDto> insumos) {
 		this.insumos = insumos;
+	}
+
+	public Long getIdMenu() {
+		return idMenu;
+	}
+
+	public void setIdMenu(Long idMenu) {
+		this.idMenu = idMenu;
+	}
+
+	public String getDescTipo() {
+		return descTipo;
+	}
+
+	public void setDescTipo(String descTipo) {
+		this.descTipo = descTipo;
 	}
 	
 }

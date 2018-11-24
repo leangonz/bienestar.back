@@ -45,4 +45,16 @@ public class MenuService {
 	public Menue obtenerMenue(Long id) throws NotFoundException {
 		return menuRepository.findById(id).orElseThrow(() -> new NotFoundException(Entity.MENU, id));
 	}
+	
+	public List<PreparacionDto> filtrarMenu(Long filter) throws NotFoundException {
+		return menuRepository.findByParams(filter).stream().map(x -> this.toDto(x)).collect(Collectors.toList());
+	}
+	
+	private PreparacionDto toDto(Menue menu) {
+		PreparacionDto dto = new PreparacionDto();
+		dto.setIdMenu(menu.getIdMenues());
+		dto.setNombreMenu(menu.getDescripcion());
+		dto.setDescTipo(menu.getTipoDeMenue().getDescripcion());
+		return dto;
+	}
 }

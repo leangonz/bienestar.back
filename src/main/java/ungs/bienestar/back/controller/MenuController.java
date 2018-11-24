@@ -7,9 +7,11 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ungs.bienestar.back.dto.InsumoDto;
+import ungs.bienestar.back.dto.MenuFilterDto;
 import ungs.bienestar.back.dto.PreparacionDto;
 import ungs.bienestar.back.exception.NotFoundException;
 import ungs.bienestar.back.service.MenuService;
@@ -34,5 +36,12 @@ public class MenuController {
     public Boolean actualizarMenu(@RequestBody List<InsumoDto> insumos, Long idMenu) throws NotFoundException {
 		menuService.modificarMenu(idMenu, insumos);
         return true;
+    }
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping("/filtrarMenu")
+	@PreAuthorize("hasAuthority('abmMenu')")
+    public List<PreparacionDto> filtrarCompra(@RequestBody MenuFilterDto filter) throws NotFoundException {
+		return menuService.filtrarMenu(filter.getIdMenu());
     }
 }
