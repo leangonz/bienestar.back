@@ -30,6 +30,9 @@ public class InsumosService {
 	@Autowired
 	private InsumoFactory insumoFactory;
 
+	@Autowired
+	private CategoriaService categoriaService;
+	
 	public List<InsumoDto> obtenerInsumosPorMenu(Long idMenue) {
 		List<Insumo> menue = menueRepository.findById(idMenue).map(m -> m.getInsumos()).orElseGet(ArrayList::new);
 		return menue.stream().map(i -> mapper(i)).collect(Collectors.toList());
@@ -53,7 +56,12 @@ public class InsumosService {
 		dto.setId(insumo.getIdInsumos());
 		dto.setDescripcion(insumo.getDescripcion());
 		dto.setUnidadDeMedida(insumo.getUnidadDeMedida().getDescripcion());
+		dto.setCategoria(categoriaService.mapper(insumo.getCategoria()));
 		return dto;
 	}
 
+	public List<InsumoDto> filtrarInsumos(Long filter) throws NotFoundException {
+		return insumoRepository.findByParams(filter).stream().map(x -> this.mapper(x)).collect(Collectors.toList());
+	}
+	
 }

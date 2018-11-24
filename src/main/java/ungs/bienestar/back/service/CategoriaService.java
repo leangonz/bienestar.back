@@ -33,7 +33,7 @@ public class CategoriaService {
 				.collect(Collectors.toList());
 	}
 	
-	private CategoriaDto mapper(Categoria categoria) {
+	public CategoriaDto mapper(Categoria categoria) {
 		CategoriaDto dto = new CategoriaDto();
 		dto.setIdCategoriaPrincipal(categoria.getId().getIdCategoriaPrincipal());
 		dto.setIdCategoriaSecundaria(categoria.getId().getIdCategoriaSecundaria());
