@@ -22,7 +22,7 @@ public class Movimiento implements Serializable{
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idMovimiento;
+    private Long idMovimientos;
 	
 	@ManyToOne
     @JoinColumn(name="id_insumos")
@@ -36,12 +36,12 @@ public class Movimiento implements Serializable{
 	
 	private LocalDate fecha;
 
-	public Long getIdMovimiento() {
-		return idMovimiento;
+	public Long getIdMovimientos() {
+		return idMovimientos;
 	}
 
-	public void setIdMovimiento(Long idMovimiento) {
-		this.idMovimiento = idMovimiento;
+	public void setIdMovimientos(Long idMovimientos) {
+		this.idMovimientos = idMovimientos;
 	}
 
 	public Insumo getInsumo() {
