@@ -46,6 +46,10 @@ public class MenuService {
 		return menuRepository.findById(id).orElseThrow(() -> new NotFoundException(Entity.MENU, id));
 	}
 	
+	public PreparacionDto obtenerMenueDto(Long id) throws NotFoundException {
+		return menuRepository.findById(id).map(x -> toDto(x)).orElseThrow(() -> new NotFoundException(Entity.PROVEEDOR, id));
+	}
+	
 	public List<PreparacionDto> filtrarMenu(Long filter) throws NotFoundException {
 		return menuRepository.findByParams(filter).stream().map(x -> this.toDto(x)).collect(Collectors.toList());
 	}
@@ -60,6 +64,8 @@ public class MenuService {
 		dto.setIdMenu(menu.getIdMenues());
 		dto.setNombreMenu(menu.getDescripcion());
 		dto.setDescTipo(menu.getTipoDeMenue().getDescripcion());
+		dto.setTipoMenu(menu.getTipoDeMenue().getIdTiposMenues());
+		dto.setInsumos(insumoService.mapper(menu.getInsumos()));
 		return dto;
 	}
 }

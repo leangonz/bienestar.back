@@ -55,7 +55,7 @@ public class InsumosService {
 		insumoRepository.save(insumo);
 	}
 	
-	private InsumoDto mapper(Insumo insumo) {
+	public InsumoDto mapper(Insumo insumo) {
 		InsumoDto dto = new InsumoDto();
 		dto.setId(insumo.getIdInsumos());
 		dto.setDescripcion(insumo.getDescripcion());
@@ -65,6 +65,10 @@ public class InsumosService {
 		return dto;
 	}
 
+	public List<InsumoDto> mapper(List<Insumo> insumos){
+		return insumos.stream().map(x -> this.mapper(x)).collect(Collectors.toList());
+	}
+	
 	public List<InsumoDto> filtrarInsumos(Long filter) throws NotFoundException {
 		return insumoRepository.findByParams(filter).stream().map(x -> this.mapper(x)).collect(Collectors.toList());
 	}

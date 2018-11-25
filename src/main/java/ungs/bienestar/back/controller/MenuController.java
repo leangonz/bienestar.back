@@ -51,4 +51,11 @@ public class MenuController {
     public Boolean borrarMenu(@RequestBody MenuFilterDto id) throws NotFoundException {
 		return menuService.borrarMenu(id.getIdMenu());
     }
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping("/buscarMenu")
+	@PreAuthorize("hasAuthority('abmMenu')")
+    public PreparacionDto buscarInsumo(@RequestBody MenuFilterDto id) throws NotFoundException {
+		return menuService.obtenerMenueDto(id.getIdMenu());
+    }
 }
