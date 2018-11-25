@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ungs.bienestar.back.dto.InsumoDto;
 import ungs.bienestar.back.dto.MenuFilterDto;
 import ungs.bienestar.back.dto.PreparacionDto;
 import ungs.bienestar.back.exception.NotFoundException;
@@ -31,10 +30,10 @@ public class MenuController {
     }
 	
 	@CrossOrigin(origins = "*")
-	@PostMapping("/actualizarMenu")
+	@PostMapping("/modificarMenu")
 	@PreAuthorize("hasAuthority('abmMenu')")
-    public Boolean actualizarMenu(@RequestBody List<InsumoDto> insumos, Long idMenu) throws NotFoundException {
-		menuService.modificarMenu(idMenu, insumos);
+    public Boolean modificarMenu(@RequestBody PreparacionDto dto) throws NotFoundException {
+		menuService.modificarMenu(dto);
         return true;
     }
 	

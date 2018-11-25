@@ -8,11 +8,9 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ungs.bienestar.back.dto.InsumoDto;
 import ungs.bienestar.back.dto.PreparacionDto;
 import ungs.bienestar.back.entity.Menue;
 import ungs.bienestar.back.exception.Entity;
-import ungs.bienestar.back.exception.LambdaExceptionWrapper;
 import ungs.bienestar.back.exception.NotFoundException;
 import ungs.bienestar.back.factory.MenuFactory;
 import ungs.bienestar.back.repository.MenueRepository;
@@ -35,11 +33,9 @@ public class MenuService {
 		menuRepository.save(menu);
 	}
 	
-	public void modificarMenu(Long id, List<InsumoDto> insumos) throws NotFoundException {
-		Menue menu =  menuRepository.findById(id).orElseThrow(() -> new NotFoundException(Entity.MENU, id));
-		menu.getInsumos().clear();
-		menu.getInsumos().addAll(insumos.stream().map(LambdaExceptionWrapper.wrapper(i -> insumoService.obtenerInsumoBy(i.getId()))).collect(Collectors.toList()));
-		menuRepository.save(menu);
+	public void modificarMenu(PreparacionDto dto) throws NotFoundException {
+		Menue menu =  menuRepository.findById(dto.getIdMenu()).orElseThrow(() -> new NotFoundException(Entity.MENU, dto.getIdMenu()));
+		menuFactory.actualizarMenu(dto, menu);
 	}
 	
 	public Menue obtenerMenue(Long id) throws NotFoundException {

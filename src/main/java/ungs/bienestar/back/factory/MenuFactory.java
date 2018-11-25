@@ -1,6 +1,7 @@
 package ungs.bienestar.back.factory;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Component;
 import ungs.bienestar.back.dto.PreparacionDto;
 import ungs.bienestar.back.entity.Menue;
 import ungs.bienestar.back.exception.ConsumerWithException;
+import ungs.bienestar.back.exception.LambdaExceptionWrapper;
 import ungs.bienestar.back.exception.NotFoundException;
 import ungs.bienestar.back.service.InsumosService;
 import ungs.bienestar.back.service.TipoMenuService;
@@ -36,4 +38,10 @@ public class MenuFactory {
 		}
 	}
 	
+	public Menue actualizarMenu(PreparacionDto origen, Menue destino) throws NotFoundException {
+		destino.setTipoDeMenue(tipoMenuService.obtenerTipoMenuBy(origen.getTipoMenu()));
+		destino.getInsumos().clear();
+		destino.getInsumos().addAll(origen.getInsumos().stream().map(LambdaExceptionWrapper.wrapper(i -> insumoService.obtenerInsumoBy(i.getId()))).collect(Collectors.toList()));
+		return destino;
+	}
 }
