@@ -39,6 +39,10 @@ public class ProveedorService {
 		return proveedorRepository.findById(id).orElseThrow(() -> new NotFoundException(Entity.PROVEEDOR, id));
 	}
 
+	public ProveedorDto obtenerProveedorDtoBy(Long id) throws NotFoundException {
+		return proveedorRepository.findById(id).map(x -> toDto(x)).orElseThrow(() -> new NotFoundException(Entity.PROVEEDOR, id));
+	}
+	
 	public List<ProveedorDto> filtrarProveedor(Long filter) throws NotFoundException {
 		return proveedorRepository.findByParams(filter).stream().map(x -> this.toDto(x)).collect(Collectors.toList());
 	}
@@ -49,6 +53,12 @@ public class ProveedorService {
 		dto.setNombre(proveedor.getNombreProveedor());
 		dto.setCuit(proveedor.getCuit());
 		dto.setTelefono(proveedor.getTelefono());
+		dto.setAltura(proveedor.getAltura());
+		dto.setCalle(proveedor.getCalle());
+		dto.setContacto(proveedor.getContacto());
+		dto.setFormaDePago(proveedor.getFormaDePago().getIdFormaPago());
+		dto.setLocalidad(proveedor.getCiudad().getCp());
+		dto.setMail(proveedor.getMail());
 		return dto;
 	}
 

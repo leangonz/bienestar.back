@@ -41,4 +41,12 @@ public class ProveedorController {
     public Boolean borrarProveedor(@RequestBody ProveedorFilterDto id) throws NotFoundException {
 		return proveedorService.borrarProveedor(id.getIdProveedor());
     }
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping("/buscarProveedor")
+	@PreAuthorize("hasAuthority('abmProveedor')")
+    public ProveedorDto buscarProveedor(@RequestBody ProveedorFilterDto id) throws NotFoundException {
+		return proveedorService.obtenerProveedorDtoBy(id.getIdProveedor());
+    }
+	
 }
