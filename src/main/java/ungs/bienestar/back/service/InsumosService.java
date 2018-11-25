@@ -55,6 +55,11 @@ public class InsumosService {
 		insumoRepository.save(insumo);
 	}
 	
+	public void modificarInsumo(InsumoDto dto) throws NotFoundException {
+		Insumo insumo = this.obtenerInsumoBy(dto.getId());
+		insumoFactory.actualizarInsumo(dto, insumo);
+	}
+	
 	public InsumoDto mapper(Insumo insumo) {
 		InsumoDto dto = new InsumoDto();
 		dto.setId(insumo.getIdInsumos());

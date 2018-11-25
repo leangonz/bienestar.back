@@ -30,6 +30,14 @@ public class InsumosController {
     }
 	
 	@CrossOrigin(origins = "*")
+	@PostMapping("/modificarInsumo")
+	@PreAuthorize("hasAuthority('abmInsumo')")
+    public Boolean modificarInsumo(@RequestBody InsumoDto dto) throws NotFoundException {
+		insumoService.modificarInsumo(dto);
+        return true;
+    }
+	
+	@CrossOrigin(origins = "*")
 	@RequestMapping("/filtrarInsumo")
 	@PreAuthorize("hasAuthority('abmInsumo')")
     public List<InsumoDto> filtrarCompra(@RequestBody InsumoFilterDto filter) throws NotFoundException {

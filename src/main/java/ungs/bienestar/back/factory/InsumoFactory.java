@@ -32,4 +32,11 @@ public class InsumoFactory {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public Insumo actualizarInsumo(InsumoDto origen, Insumo destino) throws NotFoundException {
+		destino.setUnidadDeMedida(unidadMedidaService.obtenerUnidadMedidaBy(origen.getIdUnidadMedida()));
+		CategoriaId id = new CategoriaId(origen.getCategoria().getIdCategoriaPrincipal(), origen.getCategoria().getIdCategoriaSecundaria());
+		destino.setCategoria(categoriaService.obtenerUnidadMedidaBy(id));
+		return destino;
+	}
 }
