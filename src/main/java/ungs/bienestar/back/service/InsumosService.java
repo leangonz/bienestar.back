@@ -35,11 +35,11 @@ public class InsumosService {
 	
 	public List<InsumoDto> obtenerInsumosPorMenu(Long idMenue) {
 		List<Insumo> menue = menueRepository.findById(idMenue).map(m -> m.getInsumos()).orElseGet(ArrayList::new);
-		return menue.stream().map(i -> mapper(i)).collect(Collectors.toList());
+		return menue.stream().filter(x-> x.getActivo()).map(i -> mapper(i)).collect(Collectors.toList());
 	}
 
 	public List<InsumoDto> obtenerInsumos() {
-		return insumoRepository.findAll().stream().map(i -> mapper(i)).collect(Collectors.toList());
+		return insumoRepository.findAll().stream().filter(x-> x.getActivo()).map(i -> mapper(i)).collect(Collectors.toList());
 	}
 
 	public Insumo obtenerInsumoBy(Long id) throws NotFoundException {
@@ -64,4 +64,8 @@ public class InsumosService {
 		return insumoRepository.findByParams(filter).stream().map(x -> this.mapper(x)).collect(Collectors.toList());
 	}
 	
+	public Boolean borrarProveedor(Long idInsumo) {
+		insumoRepository.findById(idInsumo).ifPresent(x -> x.setActivo(false));
+		return true;
+	}
 }

@@ -35,4 +35,11 @@ public class InsumosController {
     public List<InsumoDto> filtrarCompra(@RequestBody InsumoFilterDto filter) throws NotFoundException {
 		return insumoService.filtrarInsumos(filter.getIdInsumo());
     }
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping("/borrarInsumo")
+	@PreAuthorize("hasAuthority('abmInsumo')")
+    public Boolean borrarInsumo(@RequestBody InsumoFilterDto id) throws NotFoundException {
+		return insumoService.borrarProveedor(id.getIdInsumo());
+    }
 }

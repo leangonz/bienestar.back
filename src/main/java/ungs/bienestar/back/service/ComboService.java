@@ -110,8 +110,8 @@ public class ComboService {
 				.collect(Collectors.toList());
 	}
 	
-	public List<ComboDto> insumosItems() {
-		return insumoRepository.findAll().stream().map(m -> mapper(m::getIdInsumos, m::getDescripcion))
+	public List<ComboDto> insumosItems(Boolean todos) {
+		return insumoRepository.findAll().stream().filter(x -> x.getActivo() || todos).map(m -> mapper(m::getIdInsumos, m::getDescripcion))
 				.collect(Collectors.toList());
 	}
 	

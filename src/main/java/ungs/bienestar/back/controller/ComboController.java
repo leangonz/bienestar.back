@@ -103,7 +103,14 @@ public class ComboController {
 	@RequestMapping("/comboInsumos")
 	@PreAuthorize("isAuthenticated()")
     public List<ComboDto> comboInsumos() {
-        return comboService.insumosItems();
+        return comboService.insumosItems(true);
+    }
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping("/comboInsumosActivos")
+	@PreAuthorize("isAuthenticated()")
+    public List<ComboDto> comboInsumosActivos() {
+        return comboService.insumosItems(false);
     }
 	
 	@CrossOrigin(origins = "*")

@@ -37,6 +37,8 @@ public class Insumo implements Serializable {
 			@JoinColumn(name = "id_categoria_secundaria", referencedColumnName = "id_categoria_secundaria") })
 	private Categoria categoria;
 
+	private Boolean activo;
+	
 	public Insumo() {
 	}
 
@@ -75,6 +77,14 @@ public class Insumo implements Serializable {
 
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
+	}
+
+	public Boolean getActivo() {
+		return activo;
+	}
+
+	public void setActivo(Boolean activo) {
+		this.activo = activo;
 	}
 
 }

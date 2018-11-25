@@ -12,6 +12,6 @@ import ungs.bienestar.back.entity.Insumo;
 @Repository
 public interface InsumoRepository extends JpaRepository<Insumo, Long>{
 
-	@Query("select i from Insumo i where coalesce(:insumo, i.idInsumos) = i.idInsumos")
+	@Query("select i from Insumo i where coalesce(:insumo, i.idInsumos) = i.idInsumos and i.activo = true")
 	List<Insumo> findByParams(@Param("insumo") Long idInsumo);
 }

@@ -26,6 +26,7 @@ public class InsumoFactory {
 			insumo.setUnidadDeMedida(unidadMedidaService.obtenerUnidadMedidaBy(dto.getIdUnidadMedida()));
 			CategoriaId id = new CategoriaId(dto.getCategoria().getIdCategoriaPrincipal(), dto.getCategoria().getIdCategoriaSecundaria());
 			insumo.setCategoria(categoriaService.obtenerUnidadMedidaBy(id));
+			insumo.setActivo(true);
 			return insumo;
 		} catch (NotFoundException e) {
 			throw new RuntimeException(e);
