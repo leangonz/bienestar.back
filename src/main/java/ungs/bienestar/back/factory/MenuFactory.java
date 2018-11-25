@@ -29,6 +29,7 @@ public class MenuFactory {
 			menu.setTipoDeMenue(tipoMenuService.obtenerTipoMenuBy(dto.getTipoMenu()));
 			menu.setInsumos(new ArrayList<>());
 			dto.getInsumos().forEach(ConsumerWithException.wrapper(i -> menu.getInsumos().add(insumoService.obtenerInsumoBy(i.getId()))));
+			menu.setActivo(true);
 			return menu;
 		} catch (NotFoundException e) {
 			throw new RuntimeException(e);

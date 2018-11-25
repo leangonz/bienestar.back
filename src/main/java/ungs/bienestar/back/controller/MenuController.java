@@ -44,4 +44,11 @@ public class MenuController {
     public List<PreparacionDto> filtrarCompra(@RequestBody MenuFilterDto filter) throws NotFoundException {
 		return menuService.filtrarMenu(filter.getIdMenu());
     }
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping("/borrarMenu")
+	@PreAuthorize("hasAuthority('abmMenu')")
+    public Boolean borrarMenu(@RequestBody MenuFilterDto id) throws NotFoundException {
+		return menuService.borrarMenu(id.getIdMenu());
+    }
 }

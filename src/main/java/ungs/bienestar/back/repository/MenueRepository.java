@@ -12,7 +12,7 @@ import ungs.bienestar.back.entity.Menue;
 @Repository
 public interface MenueRepository extends JpaRepository<Menue, Long>{
 
-	@Query("select m from Menue m where coalesce(:menu, m.idMenues) = m.idMenues")
+	@Query("select m from Menue m where coalesce(:menu, m.idMenues) = m.idMenues and m.activo = true")
 	List<Menue> findByParams(@Param("menu") Long idMenu);
 
 }

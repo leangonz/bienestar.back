@@ -61,7 +61,7 @@ public class ComboService {
 	private MomentoDelDiaRepository momentoDeDiaRepository;
 	
 	public List<ComboDto> menuesItems() {
-		return menueRepository.findAll().stream().map(m -> mapper(m::getIdMenues, m::getDescripcion))
+		return menueRepository.findAll().stream().filter(x -> x.getActivo()).map(m -> mapper(m::getIdMenues, m::getDescripcion))
 				.collect(Collectors.toList());
 	}
 

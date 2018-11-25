@@ -38,6 +38,8 @@ public class Menue implements Serializable {
 	@JoinTable(name = "insumos_por_menues", joinColumns = @JoinColumn(name = "id_menues"), inverseJoinColumns = @JoinColumn(name = "id_insumos"))
 	private List<Insumo> insumos;
 
+	private Boolean activo;
+	
 	public Menue() {
 	}
 	
@@ -77,6 +79,14 @@ public class Menue implements Serializable {
 
 	public void setInsumos(List<Insumo> insumos) {
 		this.insumos = insumos;
+	}
+
+	public Boolean getActivo() {
+		return activo;
+	}
+
+	public void setActivo(Boolean activo) {
+		this.activo = activo;
 	}
 
 }

@@ -50,6 +50,11 @@ public class MenuService {
 		return menuRepository.findByParams(filter).stream().map(x -> this.toDto(x)).collect(Collectors.toList());
 	}
 	
+	public Boolean borrarMenu(Long idMenu) {
+		menuRepository.findById(idMenu).ifPresent(x -> x.setActivo(false));
+		return true;
+	}
+	
 	private PreparacionDto toDto(Menue menu) {
 		PreparacionDto dto = new PreparacionDto();
 		dto.setIdMenu(menu.getIdMenues());
