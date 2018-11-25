@@ -46,6 +46,10 @@ public class InsumosService {
 		return insumoRepository.findById(id).orElseThrow(() -> new NotFoundException(Entity.INSUMO, id));
 	}
 
+	public InsumoDto obtenerInsumoDtoBy(Long id) throws NotFoundException {
+		return insumoRepository.findById(id).map(x -> mapper(x)).orElseThrow(() -> new NotFoundException(Entity.INSUMO, id));
+	}
+	
 	public void crearInsumo(InsumoDto dto) {
 		Insumo insumo =  insumoFactory.crearInsumo(dto);
 		insumoRepository.save(insumo);
@@ -57,6 +61,7 @@ public class InsumosService {
 		dto.setDescripcion(insumo.getDescripcion());
 		dto.setUnidadDeMedida(insumo.getUnidadDeMedida().getDescripcion());
 		dto.setCategoria(categoriaService.mapper(insumo.getCategoria()));
+		dto.setIdUnidadMedida(insumo.getUnidadDeMedida().getIdUnidadMedida());
 		return dto;
 	}
 

@@ -42,4 +42,11 @@ public class InsumosController {
     public Boolean borrarInsumo(@RequestBody InsumoFilterDto id) throws NotFoundException {
 		return insumoService.borrarProveedor(id.getIdInsumo());
     }
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping("/buscarInsumo")
+	@PreAuthorize("hasAuthority('abmInsumo')")
+    public InsumoDto buscarInsumo(@RequestBody InsumoFilterDto id) throws NotFoundException {
+		return insumoService.obtenerInsumoDtoBy(id.getIdInsumo());
+    }
 }
