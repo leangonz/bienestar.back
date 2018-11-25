@@ -51,4 +51,9 @@ public class ProveedorService {
 		dto.setTelefono(proveedor.getTelefono());
 		return dto;
 	}
+
+	public Boolean borrarProveedor(Long idProveedor) {
+		proveedorRepository.findById(idProveedor).ifPresent(x -> x.setActivo(false));
+		return true;
+	}
 }

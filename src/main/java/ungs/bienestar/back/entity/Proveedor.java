@@ -44,6 +44,8 @@ public class Proveedor implements Serializable{
 	private String telefono;
 	
 	private String contacto;
+	
+	private Boolean activo;
 
 	public Long getIdProveedor() {
 		return idProveedor;
@@ -123,5 +125,13 @@ public class Proveedor implements Serializable{
 
 	public void setContacto(String contacto) {
 		this.contacto = contacto;
+	}
+
+	public Boolean getActivo() {
+		return activo;
+	}
+
+	public void setActivo(Boolean activo) {
+		this.activo = activo;
 	}
 }
