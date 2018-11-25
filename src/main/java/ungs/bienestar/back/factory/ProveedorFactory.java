@@ -29,6 +29,7 @@ public class ProveedorFactory {
 		proveedor.setContacto(dto.getContacto());
 		proveedor.setMail(dto.getMail());
 		proveedor.setTelefono(dto.getTelefono());
+		proveedor.setActivo(true);
 		return proveedor;
 	}
 

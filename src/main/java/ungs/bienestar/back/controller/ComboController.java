@@ -75,7 +75,14 @@ public class ComboController {
 	@RequestMapping("/comboProveedores")
 	@PreAuthorize("isAuthenticated()")
     public List<ComboDto> comboProveedores() {
-        return comboService.proveedoresItems();
+        return comboService.proveedoresItems(true);
+    }
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping("/comboProveedoresActivos")
+	@PreAuthorize("isAuthenticated()")
+    public List<ComboDto> comboProveedoresActivos() {
+        return comboService.proveedoresItems(false);
     }
 	
 	@CrossOrigin(origins = "*")

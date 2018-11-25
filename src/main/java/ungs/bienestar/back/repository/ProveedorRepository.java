@@ -12,6 +12,6 @@ import ungs.bienestar.back.entity.Proveedor;
 @Repository
 public interface ProveedorRepository extends JpaRepository<Proveedor, Long>{
 
-	@Query("select p from Proveedor p where coalesce(:proveedor, p.idProveedor) = p.idProveedor")
+	@Query("select p from Proveedor p where coalesce(:proveedor, p.idProveedor) = p.idProveedor and p.activo = true")
 	List<Proveedor> findByParams(@Param("proveedor") Long idProveedor);
 }

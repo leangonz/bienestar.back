@@ -95,8 +95,8 @@ public class ComboService {
 				.collect(Collectors.toList());
 	}
 
-	public List<ComboDto> proveedoresItems() {
-		return proveedorRepository.findAll().stream().map(m -> mapper(m::getIdProveedor, m::getNombreProveedor))
+	public List<ComboDto> proveedoresItems(Boolean todos) {
+		return proveedorRepository.findAll().stream().filter(x -> x.getActivo() || todos).map(m -> mapper(m::getIdProveedor, m::getNombreProveedor))
 				.collect(Collectors.toList());
 	}
 
