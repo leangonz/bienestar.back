@@ -35,6 +35,11 @@ public class ProveedorService {
 		}
 	}
 	
+	public void modificarProveedor(ProveedorDto dto) throws NotFoundException {
+		Proveedor proveedor = this.obtenerProveedorBy(dto.getId());
+		proveedorFactory.actualizarProveedor(dto, proveedor);
+	}
+	
 	public Proveedor obtenerProveedorBy(Long id) throws NotFoundException {
 		return proveedorRepository.findById(id).orElseThrow(() -> new NotFoundException(Entity.PROVEEDOR, id));
 	}

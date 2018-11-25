@@ -29,6 +29,14 @@ public class ProveedorController {
     }
 	
 	@CrossOrigin(origins = "*")
+	@RequestMapping("/modificarProveedor")
+	@PreAuthorize("hasAuthority('abmProveedor')")
+    public Boolean modificarProveedor(@RequestBody ProveedorDto dto) throws NotFoundException {
+		proveedorService.modificarProveedor(dto);
+        return true;
+    }
+	
+	@CrossOrigin(origins = "*")
 	@RequestMapping("/filtrarProveedor")
 	@PreAuthorize("hasAuthority('abmProveedor')")
     public List<ProveedorDto> filtrarCompra(@RequestBody ProveedorFilterDto filter) throws NotFoundException {

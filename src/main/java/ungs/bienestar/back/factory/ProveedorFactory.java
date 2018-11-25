@@ -33,4 +33,15 @@ public class ProveedorFactory {
 		return proveedor;
 	}
 
+	public Proveedor actualizarProveedor(ProveedorDto origen, Proveedor destino) throws NotFoundException {
+		destino.setCuit(origen.getCuit());
+		destino.setCiudad(ciudadService.obtenerCiudadBy(origen.getLocalidad()));
+		destino.setCalle(origen.getCalle());
+		destino.setAltura(origen.getAltura());
+		destino.setFormaDePago(formaDePagoService.obtenerFormaDePagoBy(origen.getFormaDePago()));
+		destino.setContacto(origen.getContacto());
+		destino.setMail(origen.getMail());
+		destino.setTelefono(origen.getTelefono());
+		return destino;
+	}
 }
