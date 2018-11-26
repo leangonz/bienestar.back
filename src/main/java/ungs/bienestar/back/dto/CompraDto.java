@@ -11,6 +11,8 @@ public class CompraDto {
 	
 	private Long proveedor;
 	
+	private String descProveedor;
+	
 	private Long area;
 	
 	private Long categoria;
@@ -63,6 +65,14 @@ public class CompraDto {
 
 	public void setItems(List<CompraItemDto> items) {
 		this.items = items;
+	}
+
+	public String getDescProveedor() {
+		return descProveedor;
+	}
+
+	public void setDescProveedor(String descProveedor) {
+		this.descProveedor = descProveedor;
 	}
 	
 }

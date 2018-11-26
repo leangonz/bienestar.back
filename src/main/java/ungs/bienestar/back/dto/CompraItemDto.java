@@ -4,9 +4,13 @@ public class CompraItemDto {
 
 	private Long insumo;
 	
+	private String descripcion;
+	
 	private Double cantidad;
 	
 	private Double precioUnitario;
+	
+	private Double precioTotal;
 
 	public Long getInsumo() {
 		return insumo;
@@ -31,4 +35,21 @@ public class CompraItemDto {
 	public void setPrecioUnitario(Double precioUnitario) {
 		this.precioUnitario = precioUnitario;
 	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public Double getPrecioTotal() {
+		return precioTotal;
+	}
+
+	public void setPrecioTotal(Double precioTotal) {
+		this.precioTotal = precioTotal;
+	}
+
 }

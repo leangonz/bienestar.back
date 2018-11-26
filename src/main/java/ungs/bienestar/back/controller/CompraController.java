@@ -14,12 +14,16 @@ import ungs.bienestar.back.dto.CompraFilterDto;
 import ungs.bienestar.back.dto.CompraResumenDto;
 import ungs.bienestar.back.exception.NotFoundException;
 import ungs.bienestar.back.service.CompraService;
+import ungs.bienestar.back.service.OrdenCompraService;
 
 @RestController
 public class CompraController {
 
 	@Autowired
 	private CompraService compraService;
+	
+	@Autowired
+	private OrdenCompraService ordenCompraService;
 	
 	@CrossOrigin(origins = "*")
 	@RequestMapping("/cargarCompra")
@@ -38,5 +42,12 @@ public class CompraController {
 	@PreAuthorize("hasAuthority('cargarCompra')")
     public List<CompraResumenDto> filtrarCompra(@RequestBody CompraFilterDto filter) {
 		return compraService.filtrarCompra(filter);
+    }
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping("/buscarCompra")
+	@PreAuthorize("hasAuthority('cargarCompra')")
+    public CompraDto buscarCompra(@RequestBody CompraFilterDto filter) throws NotFoundException {
+		return ordenCompraService.obtenerCompraDtoBy(filter.getIdCompra());
     }
 }
